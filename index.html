@@ -239,6 +239,7 @@
             border-radius: 4px;
             margin-bottom: 12px;
             background: #eee;
+            cursor: pointer;
         }
 
         .product-card h3 {
@@ -246,6 +247,11 @@
             font-weight: 600;
             margin-bottom: 4px;
             color: var(--text-main);
+            cursor: pointer;
+        }
+        
+        .product-card h3:hover {
+            color: var(--accent-gold);
         }
 
         .product-card .dept-tag {
@@ -447,9 +453,9 @@
         <!-- Admin Panel (Code: 2302) -->
         <div id="adminPanel" class="admin-panel-box hidden">
             <h3>Admin Terminal (Code: 2302)</h3>
-            <p style="font-size: 13px; color: #a0aec0;">Manage live inventory stock cycles, active suite reservations, flash deal specials, and visitor access rights.</p>
+            <p style="font-size: 13px; color: #a0aec0;">Manage live inventory stock quantities, suite availability numbers, flash specials, and visitor security status.</p>
             <div class="admin-controls">
-                <button onclick="adminRestockAll()">Restock All Items</button>
+                <button onclick="adminRestockAll()">Restock All Quantities</button>
                 <button onclick="adminToggleDeals()" class="danger">Cancel / Toggle Deals</button>
                 <button onclick="adminBanPrompt()" class="danger">Ban Customer ID</button>
                 <button onclick="closeAdminPanel()" style="background:#4a5568;">Lock Panel</button>
@@ -459,7 +465,7 @@
 
         <div id="heroSection" class="hero">
             <h1>Singadoore Culinary & Suites</h1>
-            <p>Experience ultra-modern dining, gourmet breakfast plates, and luxury hospitality items with live inventory status.</p>
+            <p>Click any item card or image to check precise live remaining stock quantities!</p>
         </div>
 
         <h2 id="sectionTitle">Gourmet Selection & Amenities</h2>
@@ -515,8 +521,23 @@
         </div>
     </div>
 
+    <!-- Item Details Modal (Shows exact remaining stock) -->
+    <div class="modal" id="itemDetailModal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-modal" onclick="closeItemDetail()">&times;</span>
+            <img id="detailImg" src="" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:15px;">
+            <h2 id="detailTitle" style="font-size: 18px; margin-bottom: 5px; border:none;"></h2>
+            <p id="detailDept" style="font-size: 11px; color:var(--accent-gold); text-transform:uppercase; font-weight:700; margin-bottom: 12px;"></p>
+            <div style="background: var(--bg-cream); padding: 15px; border-radius: 6px; margin-bottom: 15px; border: 1px solid var(--border-subtle);">
+                <p style="font-size: 14px; font-weight: 600; color:var(--text-main); margin-bottom: 5px;">Exact Remaining Stock Left:</p>
+                <span id="detailStockCount" style="font-size: 26px; font-weight: 700; color: var(--primary-dark);">0</span> Units
+            </div>
+            <p id="detailPrice" style="font-size: 16px; font-weight: 700; margin-bottom: 15px;"></p>
+            <button class="action-btn" id="detailAddBtn" onclick="addCurrentDetailToCart()">Add to Order</button>
+        </div>
+    </div>
+
     <script>
-        // Dedicated unique modern Unsplash imagery pool for distinct food/amenity representations
         const foodImages = {
             breakfast: [
                 "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=500&q=80",
@@ -587,7 +608,6 @@
         const variants = ["Signature", "Chef's Special", "Exclusive", "Grand", "Premier", "Classic", "Gourmet"];
         const modifiers = ["", "Deluxe", "Artisanal", "Reserve", "Prime"];
 
-        // Generate diverse items ensuring unique images mapped by category & index
         categoriesData.forEach(catObj => {
             let imgPool = foodImages[catObj.cat];
             catObj.names.forEach((baseName, nIdx) => {
@@ -598,6 +618,7 @@
                         let isOnSale = Math.random() < 0.25;
                         let basePrice = parseFloat((Math.random() * 45 + 8.99).toFixed(2));
                         let finalPrice = isOnSale ? parseFloat((basePrice * 0.8).toFixed(2)) : basePrice;
+                        let initialStock = Math.floor(Math.random() * 25) + 1; // Stock quantity between 1 and 25
 
                         products.push({
                             id: idCounter++,
@@ -605,7 +626,7 @@
                             price: finalPrice,
                             oldPrice: isOnSale ? basePrice : null,
                             onSale: isOnSale,
-                            inStock: Math.random() > 0.12,
+                            stockLeft: initialStock,
                             category: catObj.cat,
                             dept: catObj.dept,
                             image: uniqueImage
@@ -619,16 +640,29 @@
         let activeCategoryFilter = 'all';
         let isVipMember = false;
         let dealsActiveFlag = true;
+        let currentDetailId = null;
 
-        // Dynamic stock simulator: random items toggle stock status to make it look active
+        // Dynamic simulator: stock fluctuates downward as people buy or refills happen
         setInterval(() => {
             if (products.length === 0) return;
-            for(let i=0; i<4; i++) {
+            for(let i=0; i<6; i++) {
                 let randIdx = Math.floor(Math.random() * products.length);
-                products[randIdx].inStock = Math.random() > 0.25;
+                if (Math.random() > 0.4 && products[randIdx].stockLeft > 0) {
+                    products[randIdx].stockLeft--; // decrease stock
+                } else if(products[randIdx].stockLeft === 0 && Math.random() > 0.7) {
+                    products[randIdx].stockLeft = Math.floor(Math.random() * 10) + 1; // restock some
+                }
             }
             displayProducts(filterCurrentList());
-        }, 6000);
+            if (currentDetailId !== null) {
+                let activeProd = products.find(p => p.id === currentDetailId);
+                if(activeProd) {
+                    document.getElementById('detailStockCount').innerText = activeProd.stockLeft;
+                    document.getElementById('detailAddBtn').disabled = activeProd.stockLeft === 0;
+                    document.getElementById('detailAddBtn').innerText = activeProd.stockLeft > 0 ? 'Add to Order' : 'Sold Out';
+                }
+            }
+        }, 5000);
 
         function filterCurrentList() {
             if (activeCategoryFilter === 'all') return products;
@@ -645,26 +679,57 @@
             }
             items.slice(0, 80).forEach(p => {
                 let showDealBadge = p.onSale && dealsActiveFlag;
+                let isInStock = p.stockLeft > 0;
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
                     ${showDealBadge ? '<div class="badge-sale">Special</div>' : ''}
-                    <img src="${p.image}" alt="${p.name}" loading="lazy">
+                    <img src="${p.image}" alt="${p.name}" loading="lazy" onclick="openItemDetail(${p.id})">
                     <div class="dept-tag">${p.dept}</div>
-                    <h3>${p.name}</h3>
+                    <h3 onclick="openItemDetail(${p.id})">${p.name}</h3>
                     <div class="price-box">
                         <div class="price">$${p.price.toFixed(2)}</div>
                         ${showDealBadge && p.oldPrice ? `<div class="old-price">$${p.oldPrice.toFixed(2)}</div>` : ''}
                     </div>
-                    <div class="stock-status ${p.inStock ? 'in-stock' : 'out-stock'}">
-                        ${p.inStock ? 'Available' : 'Sold Out'}
+                    <div class="stock-status ${isInStock ? 'in-stock' : 'out-stock'}">
+                        ${isInStock ? `${p.stockLeft} left in stock` : 'Out of Stock'}
                     </div>
-                    <button onclick="addToCart(${p.id})" ${!p.inStock ? 'disabled' : ''}>
-                        ${p.inStock ? 'Add to Order' : 'Unavailable'}
+                    <button onclick="addToCart(${p.id})" ${!isInStock ? 'disabled' : ''}>
+                        ${isInStock ? 'Add to Order' : 'Unavailable'}
                     </button>
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        function openItemDetail(id) {
+            currentDetailId = id;
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+            
+            document.getElementById('detailImg').src = p.image;
+            document.getElementById('detailTitle').innerText = p.name;
+            document.getElementById('detailDept').innerText = p.dept;
+            document.getElementById('detailStockCount').innerText = p.stockLeft;
+            document.getElementById('detailPrice').innerText = `$${p.price.toFixed(2)}`;
+            
+            const btn = document.getElementById('detailAddBtn');
+            btn.disabled = p.stockLeft === 0;
+            btn.innerText = p.stockLeft > 0 ? 'Add to Order' : 'Sold Out';
+
+            document.getElementById('itemDetailModal').style.display = 'flex';
+        }
+
+        function closeItemDetail() {
+            document.getElementById('itemDetailModal').style.display = 'none';
+            currentDetailId = null;
+        }
+
+        function addCurrentDetailToCart() {
+            if (currentDetailId !== null) {
+                addToCart(currentDetailId);
+                openItemDetail(currentDetailId); // refresh view to show decreased stock counter
+            }
         }
 
         function filterCategory(cat) {
@@ -682,9 +747,11 @@
 
         function addToCart(id) {
             const item = products.find(p => p.id === id);
-            if(item && item.inStock) {
+            if(item && item.stockLeft > 0) {
+                item.stockLeft--; // Decrement stock when added to cart
                 cart.push(item);
                 saveCart();
+                displayProducts(filterCurrentList());
             }
         }
 
@@ -719,8 +786,15 @@
         }
 
         function removeFromCart(index) {
+            // Return stock back when removed from cart
+            let removedItem = cart[index];
+            let originalProduct = products.find(p => p.id === removedItem.id);
+            if (originalProduct) {
+                originalProduct.stockLeft++;
+            }
             cart.splice(index, 1);
             saveCart();
+            displayProducts(filterCurrentList());
         }
 
         function toggleCart() {
@@ -742,12 +816,13 @@
                 const activeDeals = products.filter(p => p.onSale).slice(0, 12);
                 container.innerHTML = activeDeals.map(d => `
                     <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;border-bottom:1px solid var(--border-subtle);padding-bottom:8px;">
-                        <img src="${d.image}" style="width:45px;height:45px;object-fit:cover;border-radius:4px;">
+                        <img src="${d.image}" style="width:45px;height:45px;object-fit:cover;border-radius:4px;cursor:pointer;" onclick="openItemDetail(${d.id}); openDealsModal();">
                         <div style="flex:1; font-size:13px;">
                             <strong>${d.name}</strong><br>
-                            <span style="color:var(--sale-red);font-weight:700;">$${d.price.toFixed(2)}</span> <span style="text-decoration:line-through;color:var(--text-muted);font-size:11px;">$${d.oldPrice ? d.oldPrice.toFixed(2) : ''}</span>
+                            <span style="color:var(--sale-red);font-weight:700;">$${d.price.toFixed(2)}</span> <span style="text-decoration:line-through;color:var(--text-muted);font-size:11px;">$${d.oldPrice ? d.oldPrice.toFixed(2) : ''}</span><br>
+                            <small style="color:var(--text-muted);">${d.stockLeft} left</small>
                         </div>
-                        <button onclick="addToCart(${d.id}); openDealsModal();" style="background:var(--primary-dark);color:var(--accent-gold);border:none;padding:5px 10px;border-radius:4px;cursor:pointer;font-size:12px;">Add</button>
+                        <button onclick="addToCart(${d.id}); openDealsModal();" style="background:var(--primary-dark);color:var(--accent-gold);border:none;padding:5px 10px;border-radius:4px;cursor:pointer;font-size:12px;" ${d.stockLeft === 0 ? 'disabled' : ''}>Add</button>
                     </div>
                 `).join('');
             }
@@ -789,9 +864,10 @@
         }
 
         function adminRestockAll() {
-            products.forEach(p => p.inStock = true);
-            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Restock complete: All catalog items refilled.`;
+            products.forEach(p => p.stockLeft = Math.floor(Math.random() * 20) + 10);
+            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Restock executed: All quantities refilled.`;
             displayProducts(filterCurrentList());
+            if (currentDetailId !== null) openItemDetail(currentDetailId);
             alert("All items successfully restocked!");
         }
 
