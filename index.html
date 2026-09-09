@@ -15,6 +15,7 @@
             --dark-text: #2c3e50;
             --white: #ffffff;
             --border-color: #f0d5a8;
+            --sale-red: #e74c3c;
         }
 
         * {
@@ -48,12 +49,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            cursor: pointer;
         }
 
         .search-bar {
             display: flex;
             flex: 1;
-            max-width: 550px;
+            max-width: 450px;
             margin: 10px 20px;
         }
 
@@ -78,25 +80,39 @@
             transition: 0.2s;
         }
 
-        .search-bar button:hover {
-            background-color: #e6b800;
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .action-chip {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid rgba(255,255,255,0.4);
+            transition: 0.2s;
+            font-size: 14px;
+        }
+
+        .action-chip:hover {
+            background: rgba(255,255,255,0.4);
         }
 
         .cart-btn {
             background-color: var(--summer-coral);
             color: var(--white);
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             font-weight: 700;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             box-shadow: 0 4px 10px rgba(255,111,97,0.4);
             transition: transform 0.2s;
-        }
-
-        .cart-btn:hover {
-            transform: scale(1.05);
         }
 
         nav {
@@ -107,14 +123,6 @@
             overflow-x: auto;
             border-bottom: 2px solid var(--border-color);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        nav::-webkit-scrollbar {
-            height: 6px;
-        }
-        nav::-webkit-scrollbar-thumb {
-            background: var(--summer-yellow);
-            border-radius: 10px;
         }
 
         nav a {
@@ -129,7 +137,7 @@
             transition: all 0.2s;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             background-color: var(--summer-yellow);
             color: var(--dark-text);
         }
@@ -149,7 +157,7 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(0,130,195,0.7), rgba(255,111,97,0.7)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80') center/cover;
+            background: linear-gradient(rgba(0,130,195,0.75), rgba(255,111,97,0.75)), url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1400&q=80') center/cover;
             color: var(--white);
             padding: 70px 40px;
             border-radius: 20px;
@@ -163,12 +171,6 @@
             margin-bottom: 15px;
             color: var(--summer-yellow);
             text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 20px;
-            font-weight: 600;
         }
 
         .product-grid {
@@ -187,12 +189,25 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            transition: transform 0.2s;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .badge-sale {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--sale-red);
+            color: white;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 8px;
+            text-transform: uppercase;
         }
 
         .product-card img {
@@ -201,10 +216,11 @@
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 10px;
+            background: #eee;
         }
 
         .product-card h3 {
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 6px;
             color: var(--dark-text);
         }
@@ -217,12 +233,33 @@
             letter-spacing: 1px;
         }
 
+        .price-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
         .product-card .price {
             font-size: 18px;
             font-weight: 700;
             color: var(--summer-green);
-            margin-bottom: 10px;
         }
+
+        .product-card .old-price {
+            font-size: 13px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .stock-status {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .in-stock { color: #27ae60; }
+        .out-stock { color: #c0392b; }
 
         .product-card button {
             background-color: var(--summer-blue);
@@ -236,59 +273,9 @@
             transition: background 0.2s;
         }
 
-        .product-card button:hover {
-            background-color: #006096;
-        }
-
-        .deli-section {
-            background: var(--white);
-            padding: 35px;
-            border-radius: 20px;
-            border: 3px solid var(--summer-yellow);
-            margin-bottom: 50px;
-            box-shadow: 0 5px 20px rgba(255,204,0,0.2);
-        }
-
-        .deli-builder {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .deli-group {
-            margin-bottom: 15px;
-        }
-
-        .deli-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .deli-group select, .deli-group input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            font-size: 15px;
-            outline: none;
-            background: #fff;
-        }
-
-        .action-btn {
-            background-color: var(--summer-coral);
-            color: white;
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.2s;
-        }
-        .action-btn:hover {
-            background-color: #e05a4c;
+        .product-card button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
         }
 
         .modal {
@@ -303,13 +290,70 @@
 
         .modal-content {
             background: var(--white);
-            padding: 40px;
+            padding: 35px;
             width: 90%;
             max-width: 550px;
             border-radius: 20px;
             max-height: 85vh;
             overflow-y: auto;
             border: 4px solid var(--summer-blue);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 26px;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--summer-coral);
+        }
+
+        .action-btn {
+            background-color: var(--summer-coral);
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .admin-panel-box {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 3px solid var(--summer-yellow);
+        }
+
+        .admin-panel-box h3 {
+            color: var(--summer-yellow);
+            margin-bottom: 12px;
+        }
+
+        .admin-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .admin-controls button {
+            background: var(--summer-blue);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .admin-controls button.danger {
+            background: var(--sale-red);
         }
 
         .cart-item {
@@ -321,32 +365,27 @@
             padding-bottom: 8px;
         }
 
-        .close-modal {
-            float: right;
-            font-size: 24px;
-            font-weight: 700;
-            cursor: pointer;
-            color: var(--summer-coral);
-        }
-
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">🌴 MegaMart</div>
+        <div class="logo" onclick="filterCategory('all')">🌴 MegaMart</div>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search 500,000+ items across departments...">
+            <input type="text" id="searchInput" placeholder="Search 500,000+ items..." oninput="searchItems()">
             <button onclick="searchItems()">Search</button>
         </div>
-        <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+        <div class="header-actions">
+            <button class="action-chip" onclick="openDealsModal()">🔥 Deals</button>
+            <button class="action-chip" onclick="openMemberModal()">⭐ Member Pass</button>
+            <button class="action-chip" onclick="openAccountModal()">👤 Account</button>
+            <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+        </div>
     </header>
 
-    <nav>
-        <a onclick="filterCategory('all')">🌟 All Departments</a>
+    <nav id="categoryNav">
+        <a class="active" onclick="filterCategory('all')">🌟 All Departments</a>
         <a onclick="filterCategory('clothing')">👗 Apparel & Shoes</a>
         <a onclick="filterCategory('kitchen')">🍳 Kitchen & Appliances</a>
         <a onclick="filterCategory('grocery')">🧂 Seasonings & Grocery</a>
@@ -363,47 +402,29 @@
     </nav>
 
     <div class="container">
-        <div id="heroSection" class="hero">
-            <h1>Massive 500,000+ SKU Store Inventory</h1>
-            <p>Procedural inventory system with unique image variations and clean naming conventions.</p>
+        <!-- Admin Panel (Hidden by default, unlocked via prompt / secret trigger) -->
+        <div id="adminPanel" class="admin-panel-box hidden">
+            <h3>⚙️ Restricted Administrator Terminal (Code: 2302)</h3>
+            <p style="margin-bottom: 15px;">Live store overrides, inventory loops, deal manipulation, and security clearance logs.</p>
+            <div class="admin-controls">
+                <button onclick="adminRestockAll()">Force Global Restock All SKUs</button>
+                <button onclick="adminToggleDeals()" class="danger">Cancel / Toggle Active Store Deals</button>
+                <button onclick="adminBanPrompt()" class="danger">Ban Specific Customer ID</button>
+                <button onclick="closeAdminPanel()" style="background:#7f8c8d;">Lock Panel</button>
+            </div>
+            <div id="adminLog" style="margin-top:15px; font-family:monospace; font-size:13px; color:#f1c40f;">System active. Simulation running normally.</div>
         </div>
 
-        <div id="deliSection" class="deli-section">
-            <h2>🥪 Fresh Service Deli Counter</h2>
-            <p style="margin-bottom: 20px;">Build a custom submarine sandwich prepared live by store staff!</p>
-            <div class="deli-builder">
-                <div>
-                    <div class="deli-group">
-                        <label>Choose Bread:</label>
-                        <select id="deliBread">
-                            <option value="Fresh White Sub Roll">Fresh White Sub Roll - $5.49</option>
-                            <option value="Artisan Wheat Hoagie">Artisan Wheat Hoagie - $5.49</option>
-                            <option value="Sourdough Crusty Loaf">Sourdough Crusty Loaf - $5.99</option>
-                        </select>
-                    </div>
-                    <div class="deli-group">
-                        <label>Choose Meat:</label>
-                        <select id="deliMeat">
-                            <option value="Oven Roasted Turkey">Oven Roasted Turkey</option>
-                            <option value="Honey Glazed Ham">Honey Glazed Ham</option>
-                            <option value="Angus Roast Beef">Angus Roast Beef</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <div class="deli-group">
-                        <label>Toppings:</label>
-                        <input type="text" id="deliToppings" placeholder="Lettuce, tomato, mayo...">
-                    </div>
-                    <button class="action-btn" style="margin-top: 28px;" onclick="addCustomDeliItem()">Add Deli Order to Cart 🥪</button>
-                </div>
-            </div>
+        <div id="heroSection" class="hero">
+            <h1>Massive 500,000+ SKU Store Inventory</h1>
+            <p>Live inventory sync active: items fly off shelves dynamically in real time!</p>
         </div>
 
         <h2 id="sectionTitle">Store Inventory Catalog</h2>
         <div class="product-grid" id="productGrid"></div>
     </div>
 
+    <!-- Modals -->
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleCart()">&times;</span>
@@ -411,145 +432,147 @@
             <div id="cartItemsList"><p>Your cart is empty.</p></div>
             <hr style="margin: 20px 0; border: 1px solid #eee;">
             <h3 style="margin-bottom: 20px;">Total: $<span id="cartTotal">0.00</span></h3>
-            <button class="action-btn" onclick="checkout()">Checkout Order</button>
+            <button class="action-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div class="modal" id="dealsModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="openDealsModal()">&times;</span>
+            <h2 style="color:var(--sale-red); border:none;">🔥 Active Store Flash Deals</h2>
+            <div id="dealsContainer"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="openMemberModal()">&times;</span>
+            <h2 style="color:var(--summer-blue); border:none;">⭐ MegaMart Member Pass</h2>
+            <p style="margin-bottom:15px;">Unlock free drone deliveries, double cash-back rewards, and early access to limited stock drops!</p>
+            <div style="background:#eef7fc; padding:20px; border-radius:12px; text-align:center; margin-bottom:15px;">
+                <h3 style="color:var(--summer-blue); margin-bottom:5px;" id="passStatusTitle">Standard Guest Tier</h3>
+                <p id="passStatusDesc">Upgrade today for $9.99/month</p>
+            </div>
+            <button class="action-btn" id="passUpgradeBtn" onclick="toggleMemberPass()">Upgrade to VIP Gold Pass 🌟</button>
+        </div>
+    </div>
+
+    <div class="modal" id="accountModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="openAccountModal()">&times;</span>
+            <h2 style="color:var(--summer-blue); border:none;">👤 Customer Account & Admin Entry</h2>
+            <div style="margin-bottom: 15px;">
+                <label style="display:block; font-weight:600; margin-bottom:5px;">Profile Name:</label>
+                <input type="text" id="accName" value="Valued Shopper" style="width:100%; padding:10px; border:2px solid var(--border-color); border-radius:8px;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="display:block; font-weight:600; margin-bottom:5px;">Admin Terminal Security Passkey:</label>
+                <input type="password" id="adminCodeInput" placeholder="Enter 4-digit code..." style="width:100%; padding:10px; border:2px solid var(--border-color); border-radius:8px;">
+            </div>
+            <button class="action-btn" onclick="verifyAdminCode()">Authenticate Terminal / Save Account</button>
         </div>
     </div>
 
     <script>
+        // Custom explicit image links scraped across various real domains to avoid placeholders
+        const realImages = {
+            clothing: [
+                "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=400&q=80"
+            ],
+            kitchen: [
+                "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1517668808822-9feb02f2a0e1?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1570222094111-b06ba69e4c6c?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=400&q=80"
+            ],
+            grocery: [
+                "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1532336414038-cf19250c5756?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1558857563-b3c10dc2d5d6?auto=format&fit=crop&w=400&q=80"
+            ],
+            cups: [
+                "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=80"
+            ],
+            electronics: [
+                "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80"
+            ],
+            books: [
+                "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80"
+            ],
+            summer: [
+                "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80"
+            ],
+            home: [
+                "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80"
+            ],
+            toys: [
+                "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=400&q=80"
+            ],
+            beauty: [
+                "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=80"
+            ],
+            pets: [
+                "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=400&q=80"
+            ],
+            hardware: [
+                "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=400&q=80"
+            ],
+            baby: [
+                "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=400&q=80",
+                "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=400&q=80"
+            ]
+        };
+
         const categoriesData = [
-            { 
-                cat: "clothing", dept: "Apparel & Shoes", 
-                names: ["Sundress", "Graphic Tee", "Running Shoes", "Denim Jeans", "Hoodie", "Sneakers", "Polo", "Tank Top", "Shorts", "Flannel", "Jacket", "Socks", "Hat", "Belt", "Sweatpants", "Blazer", "Cardigan", "Leggings", "Overalls", "Beanie"],
-                images: [
-                    "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "kitchen", dept: "Kitchen & Appliances", 
-                names: ["Air Fryer", "Coffee Maker", "Microwave", "Blender", "Toaster", "Stand Mixer", "Skillet", "Juicer", "Waffle Maker", "Slow Cooker", "Rice Cooker", "Kettle", "Food Processor", "Pan Set", "Knife Block", "Grater", "Colander", "Measuring Cups", "Spatula", "Tongs"],
-                images: [
-                    "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1517668808822-9feb02f2a0e1?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1570222094111-b06ba69e4c6c?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "grocery", dept: "Seasonings & Grocery", 
-                names: ["Steak Seasoning", "Pink Salt", "Garlic Powder", "Ketchup", "Black Pepper", "BBQ Rub", "Paprika", "Cumin", "Oregano", "Basil", "Thyme", "Rosemary", "Chili Powder", "Curry", "Onion Salt", "Vanilla", "Cinnamon", "Nutmeg", "Ginger", "Allspice"],
-                images: [
-                    "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1532336414038-cf19250c5756?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1558857563-b3c10dc2d5d6?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "cups", dept: "Cups & Drinkware", 
-                names: ["Tumbler", "Insulated Mug", "Mason Jar", "Coffee Mug", "Party Cups", "Thermos", "Wine Glass", "Pint Glass", "Water Bottle", "Pitcher", "Flask", "Straw Cup", "Sippy Cup", "Mule Mug", "Carafe", "Shaker", "Can Cooler", "Tea Cup", "Espresso Cup", "Punch Bowl"],
-                images: [
-                    "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "electronics", dept: "Electronics", 
-                names: ["Wall Charger", "Power Bank", "Cable", "Wireless Pad", "Smart TV", "AirPods", "Laptop", "Speaker", "Smartwatch", "HDMI Cord", "Surge Protector", "Headphones", "Car Mount", "Solar Bank", "Tablet Stand", "Webcam", "Ring Light", "SD Card", "Ethernet Cord", "Flash Drive"],
-                images: [
-                    "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "books", dept: "Books & Stationery", 
-                names: ["Novel", "Notebook", "Markers", "Journal", "Colored Pencils", "Sketchbook", "Gel Pens", "Sticky Notes", "Binders", "Composition Book", "Highlighters", "Tape", "Organizer", "Stapler", "Calculator", "Graph Paper", "Planner", "Fountain Pen", "Index Cards", "Whiteboard"],
-                images: [
-                    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "summer", dept: "Summer & Pool", 
-                names: ["Pool", "Beach Chair", "Cooler", "Beach Towel", "Pool Float", "Grill", "Water Balloons", "Snorkel", "Umbrella", "Hammock", "Cornhole", "Tiki Torch", "Bug Zapper", "String Lights", "Picnic Basket", "Water Blaster", "Beach Blanket", "Lounger", "Swim Ring", "Beach Wagon"],
-                images: [
-                    "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "home", dept: "Home & Bed", 
-                names: ["Pillow", "Vacuum", "Bath Towel", "Mattress", "Curtains", "Bed Sheets", "Area Rug", "Laundry Basket", "Shower Curtain", "Candle", "Hangers", "Storage Bins", "Desk Lamp", "Mirror", "Trash Can", "Door Mat", "Ironing Board", "Drying Rack", "Shoe Rack", "Nightstand"],
-                images: [
-                    "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "toys", dept: "Toys & Games", 
-                names: ["LEGO Set", "Nerf Blaster", "Basketball", "Action Figure", "Board Game", "RC Car", "Puzzle", "Stuffed Animal", "Dollhouse", "Blocks", "Jump Rope", "Hula Hoop", "Frisbee", "Bubble Machine", "Kite", "Launcher", "Skateboard", "Scooter", "Magic Kit", "Science Lab"],
-                images: [
-                    "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "beauty", dept: "Beauty & Pharmacy", 
-                names: ["Sunscreen", "Vitamins", "Concealer", "Moisturizer", "Shampoo", "Lip Balm", "Body Wash", "Cleanser", "Hair Dryer", "Straightener", "Toothbrush", "Nail Polish", "Perfume", "Scrub", "Eye Serum", "Aloe Vera", "First Aid", "Pain Reliever", "Sanitizer", "Diffuser"],
-                images: [
-                    "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "pets", dept: "Pet Supplies", 
-                names: ["Dog Food", "Cat Toy", "Pet Leash", "Scratching Post", "Chew Toy", "Bird Seed", "Hamster Cage", "Grooming Brush", "Fish Filter", "Pet Bed", "Litter Box", "Training Pads", "Pet Carrier", "Treat Ball", "Puppy Shampoo", "Catnip", "Aquarium Heater", "Turtle Food", "Feather Toy", "Waste Bags"],
-                images: [
-                    "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "hardware", dept: "Hardware & Auto", 
-                names: ["Tool Set", "Motor Oil", "Cordless Drill", "WD-40", "Car Soap", "Flashlight", "Tape Measure", "Multimeter", "Socket Set", "LED Light", "Zip Ties", "Bungee Cords", "Safety Glasses", "Work Gloves", "Jumper Cables", "Pressure Gauge", "Sandpaper", "Utility Knife", "Glue Gun", "Hammer"],
-                images: [
-                    "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=400&q=80"
-                ]
-            },
-            { 
-                cat: "baby", dept: "Baby Essentials", 
-                names: ["Diapers", "Formula", "Baby Wipes", "Lotion", "Baby Shampoo", "Pacifier", "Baby Bottle", "Teething Toy", "Organizer", "High Chair", "Baby Monitor", "Car Seat", "Cotton Swabs", "Rash Cream", "Bibs", "Bath Towel", "Baby Food", "Nursing Pillow", "Play Mat", "Rattle"],
-                images: [
-                    "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=400&q=80",
-                    "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=400&q=80"
-                ]
-            }
+            { cat: "clothing", dept: "Apparel & Shoes", names: ["Sundress", "Graphic Tee", "Running Shoes", "Denim Jeans", "Hoodie", "Sneakers", "Polo", "Tank Top", "Shorts", "Flannel"] },
+            { cat: "kitchen", dept: "Kitchen & Appliances", names: ["Air Fryer", "Coffee Maker", "Microwave", "Blender", "Toaster", "Stand Mixer", "Skillet", "Juicer", "Waffle Maker", "Slow Cooker"] },
+            { cat: "grocery", dept: "Seasonings & Grocery", names: ["Steak Seasoning", "Pink Salt", "Garlic Powder", "Ketchup", "Black Pepper", "BBQ Rub", "Paprika", "Cumin", "Oregano", "Basil"] },
+            { cat: "cups", dept: "Cups & Drinkware", names: ["Tumbler", "Insulated Mug", "Mason Jar", "Coffee Mug", "Party Cups", "Thermos", "Wine Glass", "Pint Glass", "Water Bottle", "Pitcher"] },
+            { cat: "electronics", dept: "Electronics", names: ["Wall Charger", "Power Bank", "Cable", "Wireless Pad", "Smart TV", "AirPods", "Laptop", "Speaker", "Smartwatch", "HDMI Cord"] },
+            { cat: "books", dept: "Books & Stationery", names: ["Novel", "Notebook", "Markers", "Journal", "Colored Pencils", "Sketchbook", "Gel Pens", "Sticky Notes", "Binders", "Composition Book"] },
+            { cat: "summer", dept: "Summer & Pool", names: ["Pool", "Beach Chair", "Cooler", "Beach Towel", "Pool Float", "Grill", "Water Balloons", "Snorkel", "Umbrella", "Hammock"] },
+            { cat: "home", dept: "Home & Bed", names: ["Pillow", "Vacuum", "Bath Towel", "Mattress", "Curtains", "Bed Sheets", "Area Rug", "Laundry Basket", "Shower Curtain", "Candle"] },
+            { cat: "toys", dept: "Toys & Games", names: ["LEGO Set", "Nerf Blaster", "Basketball", "Action Figure", "Board Game", "RC Car", "Puzzle", "Stuffed Animal", "Dollhouse", "Blocks"] },
+            { cat: "beauty", dept: "Beauty & Pharmacy", names: ["Sunscreen", "Vitamins", "Concealer", "Moisturizer", "Shampoo", "Lip Balm", "Body Wash", "Cleanser", "Hair Dryer", "Straightener"] },
+            { cat: "pets", dept: "Pet Supplies", names: ["Dog Food", "Cat Toy", "Pet Leash", "Scratching Post", "Chew Toy", "Bird Seed", "Hamster Cage", "Grooming Brush", "Fish Filter", "Pet Bed"] },
+            { cat: "hardware", dept: "Hardware & Auto", names: ["Tool Set", "Motor Oil", "Cordless Drill", "WD-40", "Car Soap", "Flashlight", "Tape Measure", "Multimeter", "Socket Set", "LED Light"] },
+            { cat: "baby", dept: "Baby Essentials", names: ["Diapers", "Formula", "Baby Wipes", "Lotion", "Baby Shampoo", "Pacifier", "Baby Bottle", "Teething Toy", "Organizer", "High Chair"] }
         ];
 
         const products = [];
@@ -557,22 +580,30 @@
         const variants = ["Standard", "Deluxe", "Ultra", "Mega Pack", "Pro", "Elite", "Max", "Supreme", "Classic", "Prime"];
         const adjectives = ["Super", "Eco", "Pro-Grade", "Smart", "Luxury", "Essential", "Advanced", "Industrial", "Heavy-Duty", "Modern"];
 
+        // Generate 500k inventory without index numbers in titles
         while (products.length < 500000) {
             for (let c = 0; c < categoriesData.length; c++) {
                 let catObj = categoriesData[c];
+                let imgList = realImages[catObj.cat];
                 for (let n = 0; n < catObj.names.length; n++) {
                     let baseName = catObj.names[n];
                     for (let v = 0; v < variants.length; v++) {
                         for (let a = 0; a < adjectives.length; a++) {
-                            // Map distinct images rotation based on loop indices to ensure unique pictures without numbers
-                            let imgIndex = (n + v + a) % catObj.images.length;
+                            let uniqueImg = imgList[(n + v + a) % imgList.length];
+                            let isOnSale = Math.random() < 0.25; // 25% chance of sale
+                            let basePrice = parseFloat((Math.random() * 150 + 4.99).toFixed(2));
+                            let finalPrice = isOnSale ? parseFloat((basePrice * 0.75).toFixed(2)) : basePrice;
+
                             products.push({
                                 id: idCounter,
-                                name: `${adjectives[a]} ${baseName} (${variants[v]})`,
-                                price: parseFloat((Math.random() * 200 + 1.99).toFixed(2)),
+                                name: `${adjectives[a]} ${baseName} ${variants[v]}`,
+                                price: finalPrice,
+                                oldPrice: isOnSale ? basePrice : null,
+                                onSale: isOnSale,
+                                inStock: Math.random() > 0.15, // 85% chance initialized in stock
                                 category: catObj.cat,
                                 dept: catObj.dept,
-                                image: catObj.images[imgIndex]
+                                image: uniqueImg
                             });
                             idCounter++;
                             if (products.length >= 500000) break;
@@ -586,58 +617,79 @@
         }
 
         let cart = JSON.parse(localStorage.getItem('megamart_cart')) || [];
+        let activeCategoryFilter = 'all';
+        let isVipMember = false;
+        let dealsActiveFlag = true;
+
+        // Dynamic shopping simulator: random items go out of stock or back in stock over time
+        setInterval(() => {
+            if (products.length === 0) return;
+            // Randomly flip stock status of 10 random items to simulate live purchases
+            for(let i=0; i<15; i++) {
+                let randIdx = Math.floor(Math.random() * 50000);
+                products[randIdx].inStock = Math.random() > 0.3;
+            }
+            // Refresh grid if on screen
+            displayProducts(filterCurrentList());
+        }, 5000);
+
+        function filterCurrentList() {
+            if (activeCategoryFilter === 'all') return products;
+            if (activeCategoryFilter === 'deals') return products.filter(p => p.onSale && dealsActiveFlag);
+            return products.filter(p => p.category === activeCategoryFilter);
+        }
 
         function displayProducts(items) {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
             if (items.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No matching products found.</p>';
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No matching items available in this category.</p>';
                 return;
             }
+            // Render first 100 sliced entries for smooth performance
             items.slice(0, 100).forEach(p => {
+                let showDealBadge = p.onSale && dealsActiveFlag;
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    <img src="${p.image}" alt="${p.name}">
+                    ${showDealBadge ? '<div class="badge-sale">Sale</div>' : ''}
+                    <img src="${p.image}" alt="${p.name}" loading="lazy">
                     <div class="dept-tag">${p.dept}</div>
                     <h3>${p.name}</h3>
-                    <div class="price">$${p.price.toFixed(2)}</div>
-                    <button onclick="addToCart(${p.id})">Add to Cart 🛒</button>
+                    <div class="price-box">
+                        <div class="price">$${p.price.toFixed(2)}</div>
+                        ${showDealBadge && p.oldPrice ? `<div class="old-price">$${p.oldPrice.toFixed(2)}</div>` : ''}
+                    </div>
+                    <div class="stock-status ${p.inStock ? 'in-stock' : 'out-stock'}">
+                        ${p.inStock ? '✔ In Stock (Selling fast)' : '❌ Out of Stock'}
+                    </div>
+                    <button onclick="addToCart(${p.id})" ${!p.inStock ? 'disabled' : ''}>
+                        ${p.inStock ? 'Add to Cart 🛒' : 'Sold Out'}
+                    </button>
                 `;
                 grid.appendChild(card);
             });
         }
 
         function filterCategory(cat) {
-            if (cat === 'all') {
-                document.getElementById('heroSection').classList.remove('hidden');
-                document.getElementById('deliSection').classList.remove('hidden');
-                displayProducts(products);
-            } else {
-                document.getElementById('heroSection').classList.add('hidden');
-                document.getElementById('deliSection').classList.toggle('hidden', cat !== 'grocery');
-                displayProducts(products.filter(p => p.category === cat));
-            }
+            activeCategoryFilter = cat;
+            document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+            document.getElementById('heroSection').classList.toggle('hidden', cat !== 'all');
+            displayProducts(filterCurrentList());
         }
 
         function searchItems() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            displayProducts(products.filter(p => p.name.toLowerCase().includes(query) || p.dept.toLowerCase().includes(query)));
+            const matched = products.filter(p => p.name.toLowerCase().includes(query) || p.dept.toLowerCase().includes(query));
+            displayProducts(matched);
         }
 
         function addToCart(id) {
-            cart.push(products.find(p => p.id === id));
-            saveCart();
-        }
-
-        function addCustomDeliItem() {
-            cart.push({
-                name: `Custom Sub: ${document.getElementById('deliMeat').value} on ${document.getElementById('deliBread').value}`,
-                price: 5.49,
-                notes: `Toppings: ${document.getElementById('deliToppings').value || 'Standard'}`
-            });
-            saveCart();
-            alert("Added custom deli order!");
+            const item = products.find(p => p.id === id);
+            if(item && item.inStock) {
+                cart.push(item);
+                saveCart();
+            }
         }
 
         function saveCart() {
@@ -656,8 +708,16 @@
             }
             list.innerHTML = '';
             cart.forEach((item, index) => {
-                total += item.price;
-                list.innerHTML += `<div class="cart-item"><div><strong>${item.name}</strong><br><small>${item.notes || ''}</small></div><div>$${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">×</button></div></div>`;
+                let effectivePrice = isVipMember ? item.price * 0.9 : item.price; // 10% VIP discount
+                total += effectivePrice;
+                list.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>${isVipMember ? 'VIP 10% Discount applied' : ''}</small>
+                        </div>
+                        <div>$${effectivePrice.toFixed(2)} <button onclick="removeFromCart(${index})" style="background:none;border:none;color:red;cursor:pointer;font-weight:bold;">×</button></div>
+                    </div>`;
             });
             document.getElementById('cartTotal').innerText = total.toFixed(2);
         }
@@ -672,8 +732,94 @@
             m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
         }
 
+        function openDealsModal() {
+            const m = document.getElementById('dealsModal');
+            if (m.style.display === 'flex') {
+                m.style.display = 'none';
+            } else {
+                m.style.display = 'flex';
+                const container = document.getElementById('dealsContainer');
+                if(!dealsActiveFlag) {
+                    container.innerHTML = '<p>All store deals have been deactivated by the administration team.</p>';
+                    return;
+                }
+                const activeDeals = products.filter(p => p.onSale).slice(0, 15);
+                container.innerHTML = activeDeals.map(d => `
+                    <div style="display:flex;align-items:center;gap:15px;margin-bottom:12px;border-bottom:1px solid #eee;padding-bottom:8px;">
+                        <img src="${d.image}" style="width:50px;height:50px;object-fit:cover;border-radius:8px;">
+                        <div style="flex:1;">
+                            <strong>${d.name}</strong><br>
+                            <span style="color:var(--sale-red);font-weight:700;">$${d.price.toFixed(2)}</span> <span style="text-decoration:line-through;color:#999;font-size:12px;">$${d.oldPrice ? d.oldPrice.toFixed(2) : ''}</span>
+                        </div>
+                        <button onclick="addToCart(${d.id}); openDealsModal();" style="background:var(--summer-blue);color:white;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;">Buy</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function openMemberModal() {
+            const m = document.getElementById('memberModal');
+            m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function toggleMemberPass() {
+            isVipMember = !isVipMember;
+            document.getElementById('passStatusTitle').innerText = isVipMember ? '⭐ VIP Gold Member Active' : 'Standard Guest Tier';
+            document.getElementById('passStatusDesc').innerText = isVipMember ? 'Enjoying 10% off entire cart automatically!' : 'Upgrade today for $9.99/month';
+            document.getElementById('passUpgradeBtn').innerText = isVipMember ? 'Cancel Membership' : 'Upgrade to VIP Gold Pass 🌟';
+            updateCartUI();
+            alert(isVipMember ? "Welcome to VIP Gold Pass! 10% member savings activated." : "Membership cancelled.");
+        }
+
+        function openAccountModal() {
+            const m = document.getElementById('accountModal');
+            m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function verifyAdminCode() {
+            const code = document.getElementById('adminCodeInput').value;
+            if (code === '2302') {
+                document.getElementById('adminPanel').classList.remove('hidden');
+                openAccountModal();
+                alert("Administrator terminal unlocked successfully!");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert("Invalid security passcode entered.");
+            }
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminPanel').classList.add('hidden');
+        }
+
+        function adminRestockAll() {
+            products.forEach(p => p.inStock = true);
+            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Force restock broadcast executed: All 500,000 SKUs refilled.`;
+            displayProducts(filterCurrentList());
+            alert("All items have been forcibly restocked across all departments!");
+        }
+
+        function adminToggleDeals() {
+            dealsActiveFlag = !dealsActiveFlag;
+            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Deals override status: active = ${dealsActiveFlag}`;
+            displayProducts(filterCurrentList());
+            alert(dealsActiveFlag ? "Store flash deals re-enabled!" : "All active deals cancelled system-wide!");
+        }
+
+        function adminBanPrompt() {
+            let custId = prompt("Enter Customer ID or IP to ban:");
+            if(custId) {
+                document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Security action: Customer token [${custId}] successfully revoked & banned.`;
+                alert(`Customer ${custId} has been banned from making purchases.`);
+            }
+        }
+
         function checkout() {
-            alert("Checkout complete!");
+            if(cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            alert("Order checked out successfully via MegaMart Express Logistics!");
             cart = [];
             saveCart();
             toggleCart();
