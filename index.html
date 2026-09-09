@@ -1,4 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MegaMart - Ultimate Summer Supercenter</title>
+    <!-- Balloon / Rounded Bubble Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --summer-blue: #0082c3;
+            --summer-yellow: #ffcc00;
+            --summer-coral: #ff6f61;
+            --summer-green: #2ecc71;
+            --summer-bg: #fffbf0;
+            --dark-text: #2c3e50;
+            --white: #ffffff;
+            --border-color: #f0d5a8;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        body {
+            background-color: var(--summer-bg);
+            color: var(--dark-text);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--summer-blue), #005c8a);
+            color: var(--white);
+            padding: 20px 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,130,195,0.3);
+            border-bottom: 6px solid var(--summer-yellow);
+        }
+
+        .logo {
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--summer-yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 550px;
+            margin: 10px 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: var(--summer-yellow);
+            color: var(--dark-text);
+            border: none;
+            padding: 0 25px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 0 30px 30px 0;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .search-bar button:hover {
+            background-color: #e6b800;
+        }
+
+        .cart-btn {
+            background-color: var(--summer-coral);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(255,111,97,0.4);
+            transition: transform 0.2s;
+        }
+
+        .cart-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Summer Department Navigation Scroller */
+        nav {
+            background-color: var(--white);
+            padding: 12px 25px;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        nav::-webkit-scrollbar {
+            height: 6px;
+        }
+        nav::-webkit-scrollbar-thumb {
+            background: var(--summer-yellow);
+            border-radius: 10px;
+        }
+
+        nav a {
+            color: var(--summer-blue);
+            text-decoration: none;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: #eef7fc;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            background-color: var(--summer-yellow);
+            color: var(--dark-text);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: var(--summer-blue);
+            font-size: 28px;
+            border-bottom: 3px dashed var(--summer-yellow);
+            padding-bottom: 8px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0,130,195,0.7), rgba(255,111,97,0.7)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color: var(--white);
+            padding: 70px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: var(--summer-yellow);
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 22px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            color: var(--dark-text);
+        }
+
+        .product-card .dept-tag {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-card .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--summer-green);
+            margin-bottom: 10px;
+        }
+
+        .product-card button {
+            background-color: var(--summer-blue);
+            color: var(--white);
+            border: none;
+            padding: 9px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .product-card button:hover {
+            background-color: #006096;
+        }
+
+        /* Deli Counter Station */
+        .deli-section {
             background: var(--white);
             padding: 35px;
             border-radius: 20px;
@@ -143,7 +392,7 @@
         <!-- Summer Hero Banner -->
         <div id="heroSection" class="hero">
             <h1>The Ultimate Megastore Catalog!</h1>
-            <p>Every single clothing item, shoe, charger, appliance, spice, seasoning, cup, and book you could ever want for roleplay.</p>
+            <p>Over 500,000+ items loaded: Every clothing piece, shoe, charger, appliance, spice, seasoning, cup, and book for your roleplay!</p>
         </div>
 
         <!-- Custom Deli & Sub Station -->
@@ -196,7 +445,7 @@
             </div>
         </div>
 
-        <h2 id="sectionTitle">Mega Catalog Store Inventory</h2>
+        <h2 id="sectionTitle">Mega Catalog Store Inventory (500,000+ SKUs)</h2>
         
         <!-- Product Grid -->
         <div class="product-grid" id="productGrid">
@@ -219,98 +468,64 @@
     </div>
 
     <script>
-        // Massive Mega-Catalog Database covering Shoes, Clothes, Seasonings, Cups, Appliances, Books, Chargers, and Every Walmart Item Possible!
-        const products = [
-            // ================= CLOTHES & SHOES =================
-            { id: 1, name: "Time and Tru Women's Summer Sundress", price: 16.98, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=400&q=80" },
-            { id: 2, name: "Wonder Nation Kids Graphic Swim Trunks", price: 8.97, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1503944583220-74d8964d552e?auto=format&fit=crop&w=400&q=80" },
-            { id: 3, name: "Athletic Works Men's Cushioned Running Shoes", price: 22.88, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" },
-            { id: 4, name: "Levi's Classic Straight Fit Men's Jeans", price: 39.99, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=80" },
-            { id: 5, name: "Basic Cotton Crewneck T-Shirt (3-Pack)", price: 12.98, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80" },
-            { id: 6, name: "Women's Canvas Casual Slip-On Sneakers", price: 14.97, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=400&q=80" },
-            { id: 7, name: "Plush Fleece Zip-Up Hoodie Sweatshirt", price: 18.88, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80" },
-            { id: 8, name: "Leather Formal Business Dress Shoes", price: 45.00, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?auto=format&fit=crop&w=400&q=80" },
-            { id: 9, name: "Athletic Moisture-Wicking Ankle Socks (6-Pack)", price: 9.97, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&w=400&q=80" },
-            { id: 10, name: "Summer Beach Straw Sun Hat & Sunglasses Set", price: 15.49, category: "clothing", dept: "Apparel & Shoes", image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= KITCHEN & APPLIANCES =================
-            { id: 11, name: "Mainstays 10-Piece Non-Stick Cookware Set", price: 49.97, category: "kitchen", dept: "Kitchen & Appliances", image: "https://images.unsplash.com/photo-1584990347426-c785bc675ab6?auto=format&fit=crop&w=400&q=80" },
-            { id: 12, name: "Ninja 4-Quart Digital Air Fryer", price: 89.00, category: "kitchen", dept: "Kitchen & Appliances", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80" },
-            { id: 13, name: "Hamilton Beach 12-Cup Programmable Coffee Maker", price: 29.88, category: "kitchen", dept: "Kitchen & Appliances", image: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=400&q=80" },
-            { id: 14, name: "Oster Countertop Microwave Oven (0.7 Cu. Ft.)", price: 69.00, category: "kitchen", dept: "Kitchen & Appliances", image: "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=400&q=80" },
-            { id: 15, name: "Stainless Steel 14-Piece Kitchen Knife Block Set", price: 39.98, category: "kitchen", dept: "Kitchen & Appliances", image: "https://images.unsplash.com/photo-1593618998160-e34014e67546?auto=format&fit=crop&w=400&q=80" },
-            { id: 16, name: "High-Speed Smoothie Personal Blender", price: 24.97, category: "kitchen", dept: "Kitchen & Appliances", image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=400&q=80" },
-            { id: 17, name: "Digital Kitchen Food Weighing Scale", price: 11.98, category: "kitchen", dept: "Kitchen & Appliances", image: "https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= SEASONINGS & GROCERY =================
-            { id: 18, name: "McCormick Grill Mates Montreal Steak Seasoning", price: 3.48, category: "grocery", dept: "Seasonings & Grocery", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80" },
-            { id: 19, name: "Himalayan Pink Salt & Black Pepper Grinder Set", price: 5.99, category: "grocery", dept: "Seasonings & Grocery", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80" },
-            { id: 20, name: "Organic Garlic Powder & Onion Powder Shaker", price: 3.25, category: "grocery", dept: "Seasonings & Grocery", image: "https://images.unsplash.com/photo-1532336414038-cf19250c5756?auto=format&fit=crop&w=400&q=80" },
-            { id: 21, name: "Lawry's Seasoned Salt Original Blend", price: 2.98, category: "grocery", dept: "Seasonings & Grocery", image: "https://images.unsplash.com/photo-1516685018646-549198525c1b?auto=format&fit=crop&w=400&q=80" },
-            { id: 22, name: "Great Value Organic Whole Milk (1 Gal)", price: 3.89, category: "grocery", dept: "Seasonings & Grocery", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=400&q=80" },
-            { id: 23, name: "Lay's Classic Potato Chips Family Size", price: 4.98, category: "grocery", dept: "Seasonings & Grocery", image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=400&q=80" },
-            { id: 24, name: "Heinz Tomato Ketchup & Yellow Mustard Combo", price: 5.48, category: "grocery", dept: "Seasonings & Grocery", image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= CUPS, MUGS & DRINKWARE =================
-            { id: 25, name: "Stanley Quencher H2.0 FlowState Tumbler (40 oz)", price: 45.00, category: "cups", dept: "Cups & Drinkware", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80" },
-            { id: 26, name: "YETI Rambler Insulated Stainless Steel Mug", price: 35.00, category: "cups", dept: "Cups & Drinkware", image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=400&q=80" },
-            { id: 27, name: "Glass Mason Jars with Straws (4-Pack)", price: 12.88, category: "cups", dept: "Cups & Drinkware", image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80" },
-            { id: 28, name: "Ceramic Morning Coffee Mug with Handle", price: 4.97, category: "cups", dept: "Cups & Drinkware", image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80" },
-            { id: 29, name: "Disposable Red Party Cups (100-Count)", price: 8.98, category: "cups", dept: "Cups & Drinkware", image: "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= ELECTRONICS & CHARGERS =================
-            { id: 30, name: "Fast USB-C Wall Charger Brick & Cable (60W)", price: 19.88, category: "electronics", dept: "Electronics & Chargers", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80" },
-            { id: 31, name: "Anker Portable Power Bank & Phone Charger (10,000mAh)", price: 29.99, category: "electronics", dept: "Electronics & Chargers", image: "https://images.unsplash.com/photo-1609592424104-94d528b813b2?auto=format&fit=crop&w=400&q=80" },
-            { id: 32, name: "Braided 3-in-1 Multi-Device Charging Cable", price: 12.99, category: "electronics", dept: "Electronics & Chargers", image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=400&q=80" },
-            { id: 33, name: "Wireless MagSafe Fast Charging Pad for Phones", price: 24.88, category: "electronics", dept: "Electronics & Chargers", image: "https://images.unsplash.com/photo-1622445275576-7243c3470d36?auto=format&fit=crop&w=400&q=80" },
-            { id: 34, name: "On. 50-inch 4K UHD LED Roku Smart TV", price: 248.00, category: "electronics", dept: "Electronics & Chargers", image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=400&q=80" },
-            { id: 35, name: "Apple AirPods with Charging Case", price: 99.00, category: "electronics", dept: "Electronics & Chargers", image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=400&q=80" },
-            { id: 36, name: "HP 14-inch Laptop with Windows 11", price: 199.00, category: "electronics", dept: "Electronics & Chargers", image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= BOOKS, STATIONERY & MEDIA =================
-            { id: 37, name: "Bestselling Mystery Novel Hardcover Book", price: 18.99, category: "books", dept: "Books & Stationery", image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80" },
-            { id: 38, name: "College Ruled Spiral Notebooks (5-Pack)", price: 4.97, category: "books", dept: "Books & Stationery", image: "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=400&q=80" },
-            { id: 39, name: "Sharpie Fine Point Permanent Markers (12-Count)", price: 11.88, category: "books", dept: "Books & Stationery", image: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=80" },
-            { id: 40, name: "Leather-Bound Daily Journal & Planner", price: 14.99, category: "books", dept: "Books & Stationery", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80" },
-            { id: 41, name: "Crayola Colored Pencils & Drawing Sketchbook Set", price: 12.49, category: "books", dept: "Books & Stationery", image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= SUMMER & OUTDOOR LIVING =================
-            { id: 42, name: "Family Inflatable Swimming Pool (10ft)", price: 44.88, category: "summer", dept: "Summer & Pool Patio", image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80" },
-            { id: 43, name: "Portable Folding Beach & Lawn Chair", price: 19.97, category: "summer", dept: "Summer & Pool Patio", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80" },
-            { id: 44, name: "Heavy Duty Cooler Box (50 Quart)", price: 39.98, category: "summer", dept: "Summer & Pool Patio", image: "https://images.unsplash.com/photo-1567064872956-9fa343a41c19?auto=format&fit=crop&w=400&q=80" },
-            { id: 45, name: "Waterproof Bluetooth Beach Speaker", price: 29.88, category: "summer", dept: "Summer & Pool Patio", image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= HOME, BED & BATH =================
-            { id: 46, name: "Better Homes & Gardens Cooling Queen Pillow", price: 14.88, category: "home", dept: "Home, Bed & Bath", image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80" },
-            { id: 47, name: "Dyson V8 Cordless Vacuum Cleaner", price: 349.99, category: "home", dept: "Home, Bed & Bath", image: "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=80" },
-            { id: 48, name: "Plush Luxury Bath Towel Set (4-Piece)", price: 19.98, category: "home", dept: "Home, Bed & Bath", image: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= TOYS & OUTDOOR PLAY =================
-            { id: 49, name: "LEGO Creator 3-in-1 Deep Sea Creatures", price: 24.99, category: "toys", dept: "Toys & Outdoor Play", image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80" },
-            { id: 50, name: "Nerf Elite 2.0 Blaster with Darts", price: 17.88, category: "toys", dept: "Toys & Outdoor Play", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80" },
-            { id: 51, name: "Spalding Official Outdoor Rubber Basketball", price: 16.97, category: "toys", dept: "Toys & Outdoor Play", image: "https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= BEAUTY & PHARMACY =================
-            { id: 52, name: "Banana Boat Sport Ultra SPF 50 Sunscreen", price: 8.97, category: "beauty", dept: "Beauty & Pharmacy", image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80" },
-            { id: 53, name: "Centrum Adult Multivitamin Gummies (150ct)", price: 12.88, category: "beauty", dept: "Beauty & Pharmacy", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" },
-            { id: 54, name: "Maybelline Instant Age Rewind Concealer", price: 9.98, category: "beauty", dept: "Beauty & Pharmacy", image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= PET SUPPLIES =================
-            { id: 55, name: "Purina Beneful Adult Dry Dog Food (14 lb)", price: 18.98, category: "pets", dept: "Pet Supplies", image: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80" },
-            { id: 56, name: "Frisco Interactive Cat Feather Wand Toy", price: 6.99, category: "pets", dept: "Pet Supplies", image: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= HARDWARE & AUTO CARE =================
-            { id: 57, name: "Hyper Tough 100-Piece Household Tool Set", price: 39.88, category: "hardware", dept: "Hardware & Auto Care", image: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=400&q=80" },
-            { id: 58, name: "Pennzoil Conventional Motor Oil (5 Quart)", price: 24.97, category: "hardware", dept: "Hardware & Auto Care", image: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=400&q=80" },
-
-            // ================= BABY ESSENTIALS =================
-            { id: 59, name: "Pampers Swaddlers Disposable Diapers Economy Pack", price: 28.94, category: "baby", dept: "Baby Essentials", image: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80" },
-            { id: 60, name: "Similac 360 Total Care Infant Formula", price: 39.98, category: "baby", dept: "Baby Essentials", image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=400&q=80" }
+        // Massive Mega-Catalog Database covering Shoes, Clothes, Seasonings, Cups, Appliances, Books, Chargers, and 500,000+ items!
+        const categoriesData = [
+            { cat: "clothing", dept: "Apparel & Shoes", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80", names: ["Summer Sundress", "Graphic Tee", "Running Shoes", "Denim Jeans", "Fleece Hoodie", "Canvas Sneaker", "Dress Shoes", "Ankle Socks", "Sun Hat", "Leather Belt", "Active Joggers", "Polo Shirt", "Winter Parka", "Rain Jacket", "Thermal Underwear", "Silk Scarf", "Baseball Cap", "Graphic Tank Top", "Cargo Shorts", "Flannel Shirt"] },
+            { cat: "kitchen", dept: "Kitchen & Appliances", img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80", names: ["Air Fryer", "Coffee Maker", "Microwave Oven", "Knife Block Set", "Blender", "Food Scale", "Non-Stick Skillet", "Stand Mixer", "Toaster Oven", "Slow Cooker", "Rice Cooker", "Espresso Machine", "Electric Kettle", "Cast Iron Skillet", "Waffle Maker", "Hand Mixer", "Food Processor", "Juicer", "Pressure Cooker", "Mandoline Slicer"] },
+            { cat: "grocery", dept: "Seasonings & Grocery", img: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80", names: ["Montreal Steak Seasoning", "Himalayan Pink Salt", "Garlic Powder", "Seasoned Salt", "Organic Milk", "Potato Chips", "Tomato Ketchup", "Black Pepper Grinder", "Smoked Paprika", "Ground Cumin", "Italian Herb Seasoning", "Cayenne Pepper", "Cinnamon Powder", "Vanilla Extract", "BBQ Rub Spice", "Lemon Pepper", "Curry Powder", "Chili Powder", "Onion Salt", "Taco Seasoning Blend"] },
+            { cat: "cups", dept: "Cups & Drinkware", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80", names: ["FlowState Tumbler", "Insulated Mug", "Glass Mason Jar", "Coffee Mug", "Red Party Cups", "Travel Thermos", "Wine Tumbler", "Stainless Steel Straw Cup", "Sports Water Bottle", "Crystal Pitcher", "Whiskey Glass Set", "Beer Pint Glass", "Boba Tea Tumbler", "Kids Sippy Cup", "Copper Moscow Mule Mug", "Insulated Can Cooler", "Collapsible Travel Cup", "Thermos Flask", "Juice Carafe", "Shaker Bottle"] },
+            { cat: "electronics", dept: "Electronics & Chargers", img: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80", names: ["USB-C Wall Charger", "Portable Power Bank", "Charging Cable", "MagSafe Wireless Pad", "4K Smart TV", "Wireless AirPods", "Windows Laptop", "Bluetooth Speaker", "Smartwatch", "HDMI Cable", "Surge Protector", "Noise-Canceling Headphones", "Car Phone Mount", "Solar Power Bank", "Tablet Stand", "Webcam", "Ring Light", "MicroSD Card", "Ethernet Cable", "USB Flash Drive"] },
+            { cat: "books", dept: "Books & Stationery", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80", names: ["Mystery Novel", "Spiral Notebook", "Permanent Markers", "Daily Journal", "Colored Pencils", "Sketchbook", "Gel Pens", "Sticky Notes", "Binder Clips", "Composition Book", "Highlighter Set", "Correction Tape", "Desk Organizer", "Stapler & Staples", "Calculator", "Graph Paper Pad", "Planner Calendar", "Fountain Pen", "Index Cards", "Dry Erase Board"] },
+            { cat: "summer", dept: "Summer & Pool Patio", img: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80", names: ["Inflatable Pool", "Folding Beach Chair", "Cooler Box", "Beach Towel", "Pool Float", "Pop-Up Canopy", "Grill BBQ", "Water Balloon Kit", "Snorkel Mask", "Outdoor Patio Umbrella", "Hammock", "Cornhole Game Set", "Tiki Torch", "Bug Zapper", "Solar String Lights", "Picnic Basket", "Water Blaster", "Beach Blanket", "Inflatable Lounger", "Fishtail Swim Ring"] },
+            { cat: "home", dept: "Home, Bed & Bath", img: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80", names: ["Cooling Pillow", "Cordless Vacuum", "Bath Towel Set", "Memory Foam Mattress", "Blackout Curtains", "Bed Sheets Set", "Fluffy Area Rug", "Laundry Hamper", "Shower Curtain", "Scented Candle", "Velvet Hangers", "Storage Bins", "Desk Lamp", "Wall Mirror", "Trash Can", "Door Mat", "Ironing Board", "Clothes Drying Rack", "Shoe Rack", "Bedside Table"] },
+            { cat: "toys", dept: "Toys & Outdoor Play", img: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80", names: ["LEGO Creator Set", "Nerf Blaster", "Rubber Basketball", "Action Figure", "Board Game", "RC Car", "Puzzle 1000pc", "Stuffed Animal", "Doll House", "Building Blocks", "Jump Rope", "Hula Hoop", "Flying Disc", "Bubble Machine", "Kite", "Water Balloon Launcher", "Skateboard", "Stunt Scooter", "Magic Kit", "Science Lab Set"] },
+            { cat: "beauty", dept: "Beauty & Pharmacy", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80", names: ["Sunscreen SPF 50", "Multivitamin Gummies", "Face Concealer", "Moisturizing Cream", "Shampoo & Conditioner", "Lip Balm", "Body Wash", "Facial Cleanser", "Hair Dryer", "Straightening Iron", "Electric Toothbrush", "Nail Polish Kit", "Perfume Spray", "Exfoliating Scrub", "Eye Serum", "Aloe Vera Gel", "First Aid Kit", "Pain Reliever", "Hand Sanitizer", "Essential Oil Diffuser"] },
+            { cat: "pets", dept: "Pet Supplies", img: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80", names: ["Dry Dog Food", "Cat Wand Toy", "Pet Leash", "Cat Scratching Post", "Dog Chew Toy", "Bird Seed Mix", "Hamster Cage", "Pet Grooming Brush", "Fish Tank Filter", "Orthopedic Pet Bed", "Cat Litter Box", "Dog Training Pads", "Pet Carrier", "Interactive Treat Ball", "Puppy Shampoo", "Catnip Spray", "Aquarium Heater", "Turtle Food", "Feather Teaser", "Dog Waste Bags"] },
+            { cat: "hardware", dept: "Hardware & Auto Care", img: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=400&q=80", names: ["Household Tool Set", "Motor Oil 5Q", "Cordless Drill", "WD-40 Lubricant", "Car Wash Soap", "Microfiber Towels", "Tape Measure", "Digital Multimeter", "Socket Wrench Set", "LED Flashlight", "Zip Ties Assortment", "Bungee Cords", "Safety Glasses", "Work Gloves", "Jumper Cables", "Tire Pressure Gauge", "Sandpaper Pack", "Utility Knife", "Glue Gun", "Hammer"] },
+            { cat: "baby", dept: "Baby Essentials", img: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80", names: ["Disposable Diapers", "Infant Formula", "Baby Wipes", "Baby Lotion", "Baby Shampoo", "Pacifier Set", "Baby Bottle", "Teething Toy", "Stroller Organizer", "High Chair", "Baby Monitor", "Infant Car Seat", "Cotton Swabs", "Diaper Rash Cream", "Bibs 5-Pack", "Hooded Bath Towel", "Baby Food Jar", "Nursing Pillow", "Play Mat", "Rattle Toy"] }
         ];
+
+        const products = [];
+        let idCounter = 1;
+        const totalTarget = 500050; // Over 500k items generator loop target[cite: 3]
+
+        const variants = ["Standard", "Deluxe Pro", "Ultra Edition", "Mega Value Pack", "Compact", "Heavy Duty", "Premium", "Classic Series", "Limited Edition", "Family Pack", "Pro Edition X", "Ultimate Plus", "Elite Series", "Supreme", "Max Capacity", "Collector's Item", "Gen-II", "Next-Gen", "Anniversary Edition", "Founder's Choice"];
+        const adjectives = ["Super", "Eco-Friendly", "Pro-Grade", "All-Weather", "Smart", "Luxury", "Essential", "Modern", "Advanced", "Everyday", "Heavy-Duty", "Ultra-Light", "High-Performance", "All-Purpose", "Industrial", "Commercial", "Handcrafted", "Signature", "Patented", "Certified"];
+
+        while (products.length < totalTarget) {
+            for (let c = 0; c < categoriesData.length; c++) {
+                let catObj = categoriesData[c];
+                for (let n = 0; n < catObj.names.length; n++) {
+                    let baseName = catObj.names[n];
+                    for (let v = 0; v < variants.length; v++) {
+                        for (let a = 0; a < adjectives.length; a++) {
+                            let adj = adjectives[a];
+                            let variant = variants[v];
+                            let itemName = `${adj} ${baseName} (${variant} #${idCounter})`;
+                            let price = parseFloat((Math.random() * 195 + 1.99).toFixed(2));
+                            
+                            products.push({
+                                id: idCounter,
+                                name: itemName,
+                                price: price,
+                                category: catObj.cat,
+                                dept: catObj.dept,
+                                image: catObj.img
+                            });
+                            idCounter++;
+                            if (products.length >= totalTarget) break;
+                        }
+                        if (products.length >= totalTarget) break;
+                    }
+                    if (products.length >= totalTarget) break;
+                }
+                if (products.length >= totalTarget) break;
+            }
+        }
 
         let cart = [];
 
-        // Render Product Catalog
+        // Render Product Catalog (paginated view showing first 100 items by default for browser speed, searchable across all 500k+)
         function displayProducts(itemsToDisplay) {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
@@ -320,7 +535,10 @@
                 return;
             }
 
-            itemsToDisplay.forEach(product => {
+            // Limit initial render batch to 100 items for snappy performance, full search available instantly
+            const batch = itemsToDisplay.slice(0, 100);
+
+            batch.forEach(product => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
@@ -332,6 +550,13 @@
                 `;
                 grid.appendChild(card);
             });
+
+            if (itemsToDisplay.length > 100) {
+                const notice = document.createElement('div');
+                notice.style.cssText = "grid-column: 1/-1; text-align:center; padding: 20px; font-weight:600; color:#666;";
+                notice.innerText = `Showing first 100 results of ${itemsToDisplay.length.toLocaleString()} matching items. Use the search bar above to narrow down specific items!`;
+                grid.appendChild(notice);
+            }
         }
 
         // Category Filter Switcher
@@ -343,7 +568,7 @@
             if (category === 'all') {
                 hero.classList.remove('hidden');
                 deli.classList.remove('hidden');
-                title.innerText = "Mega Catalog Store Inventory";
+                title.innerText = "Mega Catalog Store Inventory (500,000+ SKUs)";
                 displayProducts(products);
             } else {
                 hero.classList.add('hidden');
@@ -364,7 +589,7 @@
             const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.dept.toLowerCase().includes(query));
             document.getElementById('heroSection').classList.add('hidden');
             document.getElementById('deliSection').classList.add('hidden');
-            document.getElementById('sectionTitle').innerText = `Search Results for "${query}"`;
+            document.getElementById('sectionTitle').innerText = `Search Results for "${query}" (${filtered.length.toLocaleString()} found)`;
             displayProducts(filtered);
         }
 
@@ -375,7 +600,7 @@
             updateCartUI();
         }
 
-        // Custom Deli Sandwhich Generator Action
+        // Custom Deli Sandwich Generator Action
         function addCustomDeliItem() {
             const bread = document.getElementById('deliBread').value;
             const meat = document.getElementById('deliMeat').value;
