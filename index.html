@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MegaMart - Ultimate Summer Supercenter</title>
-    <!-- Balloon / Rounded Bubble Font -->
+    <title>MegaMart - Ultimate Massive Scale Supercenter</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -30,7 +29,6 @@
             color: var(--dark-text);
         }
 
-        /* Header & Navigation */
         header {
             background: linear-gradient(135deg, var(--summer-blue), #005c8a);
             color: var(--white);
@@ -101,7 +99,6 @@
             transform: scale(1.05);
         }
 
-        /* Summer Department Navigation Scroller */
         nav {
             background-color: var(--white);
             padding: 12px 25px;
@@ -137,7 +134,6 @@
             color: var(--dark-text);
         }
 
-        /* Main Container */
         .container {
             max-width: 1400px;
             margin: 30px auto;
@@ -152,7 +148,6 @@
             padding-bottom: 8px;
         }
 
-        /* Hero Banner */
         .hero {
             background: linear-gradient(rgba(0,130,195,0.7), rgba(255,111,97,0.7)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80') center/cover;
             color: var(--white);
@@ -176,7 +171,6 @@
             font-weight: 600;
         }
 
-        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -246,7 +240,6 @@
             background-color: #006096;
         }
 
-        /* Deli Counter Station */
         .deli-section {
             background: var(--white);
             padding: 35px;
@@ -298,7 +291,6 @@
             background-color: #e05a4c;
         }
 
-        /* Modal Cart */
         .modal {
             display: none;
             position: fixed;
@@ -340,350 +332,354 @@
         .hidden {
             display: none !important;
         }
-
-        @media(max-width: 768px) {
-            .deli-builder {
-                grid-template-columns: 1fr;
-            }
-            .search-bar {
-                max-width: 100%;
-                margin: 10px 0;
-            }
-            header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="logo">🌴 MegaMart</div>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search shoes, chargers, seasonings, appliances, books...">
+            <input type="text" id="searchInput" placeholder="Search 500,000+ items across departments...">
             <button onclick="searchItems()">Search</button>
         </div>
         <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
     </header>
 
-    <!-- Navigation Bar mapping Every Department -->
     <nav>
         <a onclick="filterCategory('all')">🌟 All Departments</a>
-        <a onclick="filterCategory('clothing')">👗 Clothes & Shoes</a>
+        <a onclick="filterCategory('clothing')">👗 Apparel & Shoes</a>
         <a onclick="filterCategory('kitchen')">🍳 Kitchen & Appliances</a>
         <a onclick="filterCategory('grocery')">🧂 Seasonings & Grocery</a>
-        <a onclick="filterCategory('cups')">🥤 Cups, Mugs & Drinkware</a>
-        <a onclick="filterCategory('electronics')">⚡ Electronics & Chargers</a>
-        <a onclick="filterCategory('books')">📚 Books, Stationery & Media</a>
-        <a onclick="filterCategory('summer')">☀️ Summer & Pool Patio</a>
-        <a onclick="filterCategory('home')">🏡 Home, Bed & Bath</a>
-        <a onclick="filterCategory('toys')">⚽ Toys & Outdoor Play</a>
+        <a onclick="filterCategory('cups')">🥤 Cups & Drinkware</a>
+        <a onclick="filterCategory('electronics')">⚡ Electronics</a>
+        <a onclick="filterCategory('books')">📚 Books & Stationery</a>
+        <a onclick="filterCategory('summer')">☀️ Summer & Pool</a>
+        <a onclick="filterCategory('home')">🏡 Home & Bed</a>
+        <a onclick="filterCategory('toys')">⚽ Toys & Games</a>
         <a onclick="filterCategory('beauty')">💄 Beauty & Pharmacy</a>
         <a onclick="filterCategory('pets')">🐾 Pet Supplies</a>
-        <a onclick="filterCategory('hardware')">🔧 Hardware & Auto Care</a>
+        <a onclick="filterCategory('hardware')">🔧 Hardware & Auto</a>
         <a onclick="filterCategory('baby')">🍼 Baby Essentials</a>
     </nav>
 
-    <!-- Main Container Area -->
     <div class="container">
-        
-        <!-- Summer Hero Banner -->
         <div id="heroSection" class="hero">
-            <h1>The Ultimate Megastore Catalog!</h1>
-            <p>Over 500,000+ items loaded: Every clothing piece, shoe, charger, appliance, spice, seasoning, cup, and book for your roleplay!</p>
+            <h1>Massive 500,000+ SKU Store Inventory</h1>
+            <p>Procedural inventory system with unique image variations and clean naming conventions.</p>
         </div>
 
-        <!-- Custom Deli & Sub Station -->
         <div id="deliSection" class="deli-section">
-            <h2>🥪 MegaMart Fresh Service Deli Counter</h2>
-            <p style="margin-bottom: 20px;">Build a custom submarine sandwich or order fresh-sliced deli meats & party platters prepared live by store staff!</p>
+            <h2>🥪 Fresh Service Deli Counter</h2>
+            <p style="margin-bottom: 20px;">Build a custom submarine sandwich prepared live by store staff!</p>
             <div class="deli-builder">
                 <div>
                     <div class="deli-group">
-                        <label>Choose Bread / Roll:</label>
+                        <label>Choose Bread:</label>
                         <select id="deliBread">
                             <option value="Fresh White Sub Roll">Fresh White Sub Roll - $5.49</option>
                             <option value="Artisan Wheat Hoagie">Artisan Wheat Hoagie - $5.49</option>
                             <option value="Sourdough Crusty Loaf">Sourdough Crusty Loaf - $5.99</option>
-                            <option value="Brioche Bun">Brioche Bun - $5.99</option>
                         </select>
                     </div>
                     <div class="deli-group">
-                        <label>Choose Deli Meat:</label>
+                        <label>Choose Meat:</label>
                         <select id="deliMeat">
-                            <option value="Oven Roasted Turkey Breast">Oven Roasted Turkey Breast</option>
+                            <option value="Oven Roasted Turkey">Oven Roasted Turkey</option>
                             <option value="Honey Glazed Ham">Honey Glazed Ham</option>
                             <option value="Angus Roast Beef">Angus Roast Beef</option>
-                            <option value="Italian Capicola & Salami">Italian Capicola & Salami</option>
-                            <option value="Rotisserie Chicken Strips">Rotisserie Chicken Strips</option>
-                        </select>
-                    </div>
-                    <div class="deli-group">
-                        <label>Choose Cheese:</label>
-                        <select id="deliCheese">
-                            <option value="Sharp Cheddar">Sharp Cheddar</option>
-                            <option value="Smoked Provolone">Smoked Provolone</option>
-                            <option value="Swiss Cheese">Swiss Cheese</option>
-                            <option value="American Deli Slice">American Deli Slice</option>
-                            <option value="Pepper Jack">Pepper Jack</option>
                         </select>
                     </div>
                 </div>
                 <div>
                     <div class="deli-group">
-                        <label>Fresh Toppings / Veggies:</label>
-                        <input type="text" id="deliToppings" placeholder="Lettuce, tomatoes, onions, pickles, banana peppers...">
+                        <label>Toppings:</label>
+                        <input type="text" id="deliToppings" placeholder="Lettuce, tomato, mayo...">
                     </div>
-                    <div class="deli-group">
-                        <label>Dressing / Spreads & Notes:</label>
-                        <input type="text" id="deliNotes" placeholder="Mayo, oil & vinegar, extra toasted, etc.">
-                    </div>
-                    <button class="action-btn" style="margin-top: 22px;" onclick="addCustomDeliItem()">Add Deli Order to Cart 🥪</button>
+                    <button class="action-btn" style="margin-top: 28px;" onclick="addCustomDeliItem()">Add Deli Order to Cart 🥪</button>
                 </div>
             </div>
         </div>
 
-        <h2 id="sectionTitle">Mega Catalog Store Inventory (500,000+ SKUs)</h2>
-        
-        <!-- Product Grid -->
-        <div class="product-grid" id="productGrid">
-            <!-- Dynamically populated via JS -->
-        </div>
+        <h2 id="sectionTitle">Store Inventory Catalog</h2>
+        <div class="product-grid" id="productGrid"></div>
     </div>
 
-    <!-- Shopping Cart Modal -->
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleCart()">&times;</span>
-            <h2 style="color:var(--summer-blue); border:none;">🛒 MegaMart Shopping Cart</h2>
-            <div id="cartItemsList">
-                <p>Your cart is currently empty.</p>
-            </div>
+            <h2 style="color:var(--summer-blue); border:none;">🛒 Shopping Cart</h2>
+            <div id="cartItemsList"><p>Your cart is empty.</p></div>
             <hr style="margin: 20px 0; border: 1px solid #eee;">
-            <h3 style="margin-bottom: 20px;">Estimated Total: $<span id="cartTotal">0.00</span></h3>
-            <button class="action-btn" onclick="checkout()">Complete Register Checkout (Roleplay)</button>
+            <h3 style="margin-bottom: 20px;">Total: $<span id="cartTotal">0.00</span></h3>
+            <button class="action-btn" onclick="checkout()">Checkout Order</button>
         </div>
     </div>
 
     <script>
-        // Massive Mega-Catalog Database covering Shoes, Clothes, Seasonings, Cups, Appliances, Books, Chargers, and 500,000+ items!
         const categoriesData = [
-            { cat: "clothing", dept: "Apparel & Shoes", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80", names: ["Summer Sundress", "Graphic Tee", "Running Shoes", "Denim Jeans", "Fleece Hoodie", "Canvas Sneaker", "Dress Shoes", "Ankle Socks", "Sun Hat", "Leather Belt", "Active Joggers", "Polo Shirt", "Winter Parka", "Rain Jacket", "Thermal Underwear", "Silk Scarf", "Baseball Cap", "Graphic Tank Top", "Cargo Shorts", "Flannel Shirt"] },
-            { cat: "kitchen", dept: "Kitchen & Appliances", img: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80", names: ["Air Fryer", "Coffee Maker", "Microwave Oven", "Knife Block Set", "Blender", "Food Scale", "Non-Stick Skillet", "Stand Mixer", "Toaster Oven", "Slow Cooker", "Rice Cooker", "Espresso Machine", "Electric Kettle", "Cast Iron Skillet", "Waffle Maker", "Hand Mixer", "Food Processor", "Juicer", "Pressure Cooker", "Mandoline Slicer"] },
-            { cat: "grocery", dept: "Seasonings & Grocery", img: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80", names: ["Montreal Steak Seasoning", "Himalayan Pink Salt", "Garlic Powder", "Seasoned Salt", "Organic Milk", "Potato Chips", "Tomato Ketchup", "Black Pepper Grinder", "Smoked Paprika", "Ground Cumin", "Italian Herb Seasoning", "Cayenne Pepper", "Cinnamon Powder", "Vanilla Extract", "BBQ Rub Spice", "Lemon Pepper", "Curry Powder", "Chili Powder", "Onion Salt", "Taco Seasoning Blend"] },
-            { cat: "cups", dept: "Cups & Drinkware", img: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80", names: ["FlowState Tumbler", "Insulated Mug", "Glass Mason Jar", "Coffee Mug", "Red Party Cups", "Travel Thermos", "Wine Tumbler", "Stainless Steel Straw Cup", "Sports Water Bottle", "Crystal Pitcher", "Whiskey Glass Set", "Beer Pint Glass", "Boba Tea Tumbler", "Kids Sippy Cup", "Copper Moscow Mule Mug", "Insulated Can Cooler", "Collapsible Travel Cup", "Thermos Flask", "Juice Carafe", "Shaker Bottle"] },
-            { cat: "electronics", dept: "Electronics & Chargers", img: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80", names: ["USB-C Wall Charger", "Portable Power Bank", "Charging Cable", "MagSafe Wireless Pad", "4K Smart TV", "Wireless AirPods", "Windows Laptop", "Bluetooth Speaker", "Smartwatch", "HDMI Cable", "Surge Protector", "Noise-Canceling Headphones", "Car Phone Mount", "Solar Power Bank", "Tablet Stand", "Webcam", "Ring Light", "MicroSD Card", "Ethernet Cable", "USB Flash Drive"] },
-            { cat: "books", dept: "Books & Stationery", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80", names: ["Mystery Novel", "Spiral Notebook", "Permanent Markers", "Daily Journal", "Colored Pencils", "Sketchbook", "Gel Pens", "Sticky Notes", "Binder Clips", "Composition Book", "Highlighter Set", "Correction Tape", "Desk Organizer", "Stapler & Staples", "Calculator", "Graph Paper Pad", "Planner Calendar", "Fountain Pen", "Index Cards", "Dry Erase Board"] },
-            { cat: "summer", dept: "Summer & Pool Patio", img: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80", names: ["Inflatable Pool", "Folding Beach Chair", "Cooler Box", "Beach Towel", "Pool Float", "Pop-Up Canopy", "Grill BBQ", "Water Balloon Kit", "Snorkel Mask", "Outdoor Patio Umbrella", "Hammock", "Cornhole Game Set", "Tiki Torch", "Bug Zapper", "Solar String Lights", "Picnic Basket", "Water Blaster", "Beach Blanket", "Inflatable Lounger", "Fishtail Swim Ring"] },
-            { cat: "home", dept: "Home, Bed & Bath", img: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80", names: ["Cooling Pillow", "Cordless Vacuum", "Bath Towel Set", "Memory Foam Mattress", "Blackout Curtains", "Bed Sheets Set", "Fluffy Area Rug", "Laundry Hamper", "Shower Curtain", "Scented Candle", "Velvet Hangers", "Storage Bins", "Desk Lamp", "Wall Mirror", "Trash Can", "Door Mat", "Ironing Board", "Clothes Drying Rack", "Shoe Rack", "Bedside Table"] },
-            { cat: "toys", dept: "Toys & Outdoor Play", img: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80", names: ["LEGO Creator Set", "Nerf Blaster", "Rubber Basketball", "Action Figure", "Board Game", "RC Car", "Puzzle 1000pc", "Stuffed Animal", "Doll House", "Building Blocks", "Jump Rope", "Hula Hoop", "Flying Disc", "Bubble Machine", "Kite", "Water Balloon Launcher", "Skateboard", "Stunt Scooter", "Magic Kit", "Science Lab Set"] },
-            { cat: "beauty", dept: "Beauty & Pharmacy", img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80", names: ["Sunscreen SPF 50", "Multivitamin Gummies", "Face Concealer", "Moisturizing Cream", "Shampoo & Conditioner", "Lip Balm", "Body Wash", "Facial Cleanser", "Hair Dryer", "Straightening Iron", "Electric Toothbrush", "Nail Polish Kit", "Perfume Spray", "Exfoliating Scrub", "Eye Serum", "Aloe Vera Gel", "First Aid Kit", "Pain Reliever", "Hand Sanitizer", "Essential Oil Diffuser"] },
-            { cat: "pets", dept: "Pet Supplies", img: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80", names: ["Dry Dog Food", "Cat Wand Toy", "Pet Leash", "Cat Scratching Post", "Dog Chew Toy", "Bird Seed Mix", "Hamster Cage", "Pet Grooming Brush", "Fish Tank Filter", "Orthopedic Pet Bed", "Cat Litter Box", "Dog Training Pads", "Pet Carrier", "Interactive Treat Ball", "Puppy Shampoo", "Catnip Spray", "Aquarium Heater", "Turtle Food", "Feather Teaser", "Dog Waste Bags"] },
-            { cat: "hardware", dept: "Hardware & Auto Care", img: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=400&q=80", names: ["Household Tool Set", "Motor Oil 5Q", "Cordless Drill", "WD-40 Lubricant", "Car Wash Soap", "Microfiber Towels", "Tape Measure", "Digital Multimeter", "Socket Wrench Set", "LED Flashlight", "Zip Ties Assortment", "Bungee Cords", "Safety Glasses", "Work Gloves", "Jumper Cables", "Tire Pressure Gauge", "Sandpaper Pack", "Utility Knife", "Glue Gun", "Hammer"] },
-            { cat: "baby", dept: "Baby Essentials", img: "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80", names: ["Disposable Diapers", "Infant Formula", "Baby Wipes", "Baby Lotion", "Baby Shampoo", "Pacifier Set", "Baby Bottle", "Teething Toy", "Stroller Organizer", "High Chair", "Baby Monitor", "Infant Car Seat", "Cotton Swabs", "Diaper Rash Cream", "Bibs 5-Pack", "Hooded Bath Towel", "Baby Food Jar", "Nursing Pillow", "Play Mat", "Rattle Toy"] }
+            { 
+                cat: "clothing", dept: "Apparel & Shoes", 
+                names: ["Sundress", "Graphic Tee", "Running Shoes", "Denim Jeans", "Hoodie", "Sneakers", "Polo", "Tank Top", "Shorts", "Flannel", "Jacket", "Socks", "Hat", "Belt", "Sweatpants", "Blazer", "Cardigan", "Leggings", "Overalls", "Beanie"],
+                images: [
+                    "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "kitchen", dept: "Kitchen & Appliances", 
+                names: ["Air Fryer", "Coffee Maker", "Microwave", "Blender", "Toaster", "Stand Mixer", "Skillet", "Juicer", "Waffle Maker", "Slow Cooker", "Rice Cooker", "Kettle", "Food Processor", "Pan Set", "Knife Block", "Grater", "Colander", "Measuring Cups", "Spatula", "Tongs"],
+                images: [
+                    "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1517668808822-9feb02f2a0e1?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1570222094111-b06ba69e4c6c?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "grocery", dept: "Seasonings & Grocery", 
+                names: ["Steak Seasoning", "Pink Salt", "Garlic Powder", "Ketchup", "Black Pepper", "BBQ Rub", "Paprika", "Cumin", "Oregano", "Basil", "Thyme", "Rosemary", "Chili Powder", "Curry", "Onion Salt", "Vanilla", "Cinnamon", "Nutmeg", "Ginger", "Allspice"],
+                images: [
+                    "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1532336414038-cf19250c5756?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1558857563-b3c10dc2d5d6?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "cups", dept: "Cups & Drinkware", 
+                names: ["Tumbler", "Insulated Mug", "Mason Jar", "Coffee Mug", "Party Cups", "Thermos", "Wine Glass", "Pint Glass", "Water Bottle", "Pitcher", "Flask", "Straw Cup", "Sippy Cup", "Mule Mug", "Carafe", "Shaker", "Can Cooler", "Tea Cup", "Espresso Cup", "Punch Bowl"],
+                images: [
+                    "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "electronics", dept: "Electronics", 
+                names: ["Wall Charger", "Power Bank", "Cable", "Wireless Pad", "Smart TV", "AirPods", "Laptop", "Speaker", "Smartwatch", "HDMI Cord", "Surge Protector", "Headphones", "Car Mount", "Solar Bank", "Tablet Stand", "Webcam", "Ring Light", "SD Card", "Ethernet Cord", "Flash Drive"],
+                images: [
+                    "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "books", dept: "Books & Stationery", 
+                names: ["Novel", "Notebook", "Markers", "Journal", "Colored Pencils", "Sketchbook", "Gel Pens", "Sticky Notes", "Binders", "Composition Book", "Highlighters", "Tape", "Organizer", "Stapler", "Calculator", "Graph Paper", "Planner", "Fountain Pen", "Index Cards", "Whiteboard"],
+                images: [
+                    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "summer", dept: "Summer & Pool", 
+                names: ["Pool", "Beach Chair", "Cooler", "Beach Towel", "Pool Float", "Grill", "Water Balloons", "Snorkel", "Umbrella", "Hammock", "Cornhole", "Tiki Torch", "Bug Zapper", "String Lights", "Picnic Basket", "Water Blaster", "Beach Blanket", "Lounger", "Swim Ring", "Beach Wagon"],
+                images: [
+                    "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "home", dept: "Home & Bed", 
+                names: ["Pillow", "Vacuum", "Bath Towel", "Mattress", "Curtains", "Bed Sheets", "Area Rug", "Laundry Basket", "Shower Curtain", "Candle", "Hangers", "Storage Bins", "Desk Lamp", "Mirror", "Trash Can", "Door Mat", "Ironing Board", "Drying Rack", "Shoe Rack", "Nightstand"],
+                images: [
+                    "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "toys", dept: "Toys & Games", 
+                names: ["LEGO Set", "Nerf Blaster", "Basketball", "Action Figure", "Board Game", "RC Car", "Puzzle", "Stuffed Animal", "Dollhouse", "Blocks", "Jump Rope", "Hula Hoop", "Frisbee", "Bubble Machine", "Kite", "Launcher", "Skateboard", "Scooter", "Magic Kit", "Science Lab"],
+                images: [
+                    "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "beauty", dept: "Beauty & Pharmacy", 
+                names: ["Sunscreen", "Vitamins", "Concealer", "Moisturizer", "Shampoo", "Lip Balm", "Body Wash", "Cleanser", "Hair Dryer", "Straightener", "Toothbrush", "Nail Polish", "Perfume", "Scrub", "Eye Serum", "Aloe Vera", "First Aid", "Pain Reliever", "Sanitizer", "Diffuser"],
+                images: [
+                    "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "pets", dept: "Pet Supplies", 
+                names: ["Dog Food", "Cat Toy", "Pet Leash", "Scratching Post", "Chew Toy", "Bird Seed", "Hamster Cage", "Grooming Brush", "Fish Filter", "Pet Bed", "Litter Box", "Training Pads", "Pet Carrier", "Treat Ball", "Puppy Shampoo", "Catnip", "Aquarium Heater", "Turtle Food", "Feather Toy", "Waste Bags"],
+                images: [
+                    "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "hardware", dept: "Hardware & Auto", 
+                names: ["Tool Set", "Motor Oil", "Cordless Drill", "WD-40", "Car Soap", "Flashlight", "Tape Measure", "Multimeter", "Socket Set", "LED Light", "Zip Ties", "Bungee Cords", "Safety Glasses", "Work Gloves", "Jumper Cables", "Pressure Gauge", "Sandpaper", "Utility Knife", "Glue Gun", "Hammer"],
+                images: [
+                    "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=400&q=80"
+                ]
+            },
+            { 
+                cat: "baby", dept: "Baby Essentials", 
+                names: ["Diapers", "Formula", "Baby Wipes", "Lotion", "Baby Shampoo", "Pacifier", "Baby Bottle", "Teething Toy", "Organizer", "High Chair", "Baby Monitor", "Car Seat", "Cotton Swabs", "Rash Cream", "Bibs", "Bath Towel", "Baby Food", "Nursing Pillow", "Play Mat", "Rattle"],
+                images: [
+                    "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=400&q=80",
+                    "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=400&q=80"
+                ]
+            }
         ];
 
         const products = [];
         let idCounter = 1;
-        const totalTarget = 500050; // Over 500k items generator loop target[cite: 3]
+        const variants = ["Standard", "Deluxe", "Ultra", "Mega Pack", "Pro", "Elite", "Max", "Supreme", "Classic", "Prime"];
+        const adjectives = ["Super", "Eco", "Pro-Grade", "Smart", "Luxury", "Essential", "Advanced", "Industrial", "Heavy-Duty", "Modern"];
 
-        const variants = ["Standard", "Deluxe Pro", "Ultra Edition", "Mega Value Pack", "Compact", "Heavy Duty", "Premium", "Classic Series", "Limited Edition", "Family Pack", "Pro Edition X", "Ultimate Plus", "Elite Series", "Supreme", "Max Capacity", "Collector's Item", "Gen-II", "Next-Gen", "Anniversary Edition", "Founder's Choice"];
-        const adjectives = ["Super", "Eco-Friendly", "Pro-Grade", "All-Weather", "Smart", "Luxury", "Essential", "Modern", "Advanced", "Everyday", "Heavy-Duty", "Ultra-Light", "High-Performance", "All-Purpose", "Industrial", "Commercial", "Handcrafted", "Signature", "Patented", "Certified"];
-
-        while (products.length < totalTarget) {
+        while (products.length < 500000) {
             for (let c = 0; c < categoriesData.length; c++) {
                 let catObj = categoriesData[c];
                 for (let n = 0; n < catObj.names.length; n++) {
                     let baseName = catObj.names[n];
                     for (let v = 0; v < variants.length; v++) {
                         for (let a = 0; a < adjectives.length; a++) {
-                            let adj = adjectives[a];
-                            let variant = variants[v];
-                            let itemName = `${adj} ${baseName} (${variant} #${idCounter})`;
-                            let price = parseFloat((Math.random() * 195 + 1.99).toFixed(2));
-                            
+                            // Map distinct images rotation based on loop indices to ensure unique pictures without numbers
+                            let imgIndex = (n + v + a) % catObj.images.length;
                             products.push({
                                 id: idCounter,
-                                name: itemName,
-                                price: price,
+                                name: `${adjectives[a]} ${baseName} (${variants[v]})`,
+                                price: parseFloat((Math.random() * 200 + 1.99).toFixed(2)),
                                 category: catObj.cat,
                                 dept: catObj.dept,
-                                image: catObj.img
+                                image: catObj.images[imgIndex]
                             });
                             idCounter++;
-                            if (products.length >= totalTarget) break;
+                            if (products.length >= 500000) break;
                         }
-                        if (products.length >= totalTarget) break;
+                        if (products.length >= 500000) break;
                     }
-                    if (products.length >= totalTarget) break;
+                    if (products.length >= 500000) break;
                 }
-                if (products.length >= totalTarget) break;
+                if (products.length >= 500000) break;
             }
         }
 
-        let cart = [];
+        let cart = JSON.parse(localStorage.getItem('megamart_cart')) || [];
 
-        // Render Product Catalog (paginated view showing first 100 items by default for browser speed, searchable across all 500k+)
-        function displayProducts(itemsToDisplay) {
+        function displayProducts(items) {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
-            
-            if (itemsToDisplay.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; font-size:18px;">No matching products located.</p>';
+            if (items.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No matching products found.</p>';
                 return;
             }
-
-            // Limit initial render batch to 100 items for snappy performance, full search available instantly
-            const batch = itemsToDisplay.slice(0, 100);
-
-            batch.forEach(product => {
+            items.slice(0, 100).forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <div class="dept-tag">${product.dept}</div>
-                    <h3>${product.name}</h3>
-                    <div class="price">$${product.price.toFixed(2)}</div>
-                    <button onclick="addToCart(${product.id})">Add to Cart 🛒</button>
+                    <img src="${p.image}" alt="${p.name}">
+                    <div class="dept-tag">${p.dept}</div>
+                    <h3>${p.name}</h3>
+                    <div class="price">$${p.price.toFixed(2)}</div>
+                    <button onclick="addToCart(${p.id})">Add to Cart 🛒</button>
                 `;
                 grid.appendChild(card);
             });
-
-            if (itemsToDisplay.length > 100) {
-                const notice = document.createElement('div');
-                notice.style.cssText = "grid-column: 1/-1; text-align:center; padding: 20px; font-weight:600; color:#666;";
-                notice.innerText = `Showing first 100 results of ${itemsToDisplay.length.toLocaleString()} matching items. Use the search bar above to narrow down specific items!`;
-                grid.appendChild(notice);
-            }
         }
 
-        // Category Filter Switcher
-        function filterCategory(category) {
-            const hero = document.getElementById('heroSection');
-            const deli = document.getElementById('deliSection');
-            const title = document.getElementById('sectionTitle');
-
-            if (category === 'all') {
-                hero.classList.remove('hidden');
-                deli.classList.remove('hidden');
-                title.innerText = "Mega Catalog Store Inventory (500,000+ SKUs)";
+        function filterCategory(cat) {
+            if (cat === 'all') {
+                document.getElementById('heroSection').classList.remove('hidden');
+                document.getElementById('deliSection').classList.remove('hidden');
                 displayProducts(products);
             } else {
-                hero.classList.add('hidden');
-                if(category === 'grocery') {
-                    deli.classList.remove('hidden');
-                } else {
-                    deli.classList.add('hidden');
-                }
-                title.innerText = category.charAt(0).toUpperCase() + category.slice(1) + " Department";
-                const filtered = products.filter(p => p.category === category);
-                displayProducts(filtered);
+                document.getElementById('heroSection').classList.add('hidden');
+                document.getElementById('deliSection').classList.toggle('hidden', cat !== 'grocery');
+                displayProducts(products.filter(p => p.category === cat));
             }
         }
 
-        // Search Bar Handler
         function searchItems() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.dept.toLowerCase().includes(query));
-            document.getElementById('heroSection').classList.add('hidden');
-            document.getElementById('deliSection').classList.add('hidden');
-            document.getElementById('sectionTitle').innerText = `Search Results for "${query}" (${filtered.length.toLocaleString()} found)`;
-            displayProducts(filtered);
+            displayProducts(products.filter(p => p.name.toLowerCase().includes(query) || p.dept.toLowerCase().includes(query)));
         }
 
-        // Add Standard Item to Cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            cart.push(product);
-            updateCartUI();
+        function addToCart(id) {
+            cart.push(products.find(p => p.id === id));
+            saveCart();
         }
 
-        // Custom Deli Sandwich Generator Action
         function addCustomDeliItem() {
-            const bread = document.getElementById('deliBread').value;
-            const meat = document.getElementById('deliMeat').value;
-            const cheese = document.getElementById('deliCheese').value;
-            const toppings = document.getElementById('deliToppings').value;
-            const notes = document.getElementById('deliNotes').value;
-
-            let price = 5.49;
-            if(bread.includes('Sourdough')) price = 5.99;
-
-            const customSub = {
-                name: `Custom Deli Sub: ${meat}, ${cheese} on ${bread}`,
-                price: price,
-                dept: "Service Deli Counter",
-                notes: `Toppings: ${toppings || 'Standard'} | Notes: ${notes || 'None'}`
-            };
-
-            cart.push(customSub);
-            updateCartUI();
-            alert("Success! Your custom sub order was sent to the deli associate and placed in your cart.");
+            cart.push({
+                name: `Custom Sub: ${document.getElementById('deliMeat').value} on ${document.getElementById('deliBread').value}`,
+                price: 5.49,
+                notes: `Toppings: ${document.getElementById('deliToppings').value || 'Standard'}`
+            });
+            saveCart();
+            alert("Added custom deli order!");
         }
 
-        // Update Cart Modal and Counter
+        function saveCart() {
+            localStorage.setItem('megamart_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
         function updateCartUI() {
             document.getElementById('cartCount').innerText = cart.length;
-            
-            const listEl = document.getElementById('cartItemsList');
-            const totalEl = document.getElementById('cartTotal');
-            
+            const list = document.getElementById('cartItemsList');
+            let total = 0;
             if (cart.length === 0) {
-                listEl.innerHTML = '<p>Your cart is currently empty.</p>';
-                totalEl.innerText = '0.00';
+                list.innerHTML = '<p>Your cart is empty.</p>';
+                document.getElementById('cartTotal').innerText = '0.00';
                 return;
             }
-
-            listEl.innerHTML = '';
-            let total = 0;
-
+            list.innerHTML = '';
             cart.forEach((item, index) => {
                 total += item.price;
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'cart-item';
-                itemDiv.innerHTML = `
-                    <div>
-                        <strong>${item.name}</strong>
-                        ${item.notes ? '<br><small style="color:#666;">' + item.notes + '</small>' : ''}
-                    </div>
-                    <div style="text-align:right;">
-                        $${item.price.toFixed(2)} 
-                        <button onclick="removeFromCart(${index})" style="color:white; background:var(--summer-coral); border:none; border-radius:50%; width:22px; height:22px; cursor:pointer; margin-left:8px; font-weight:bold;">×</button>
-                    </div>
-                `;
-                listEl.appendChild(itemDiv);
+                list.innerHTML += `<div class="cart-item"><div><strong>${item.name}</strong><br><small>${item.notes || ''}</small></div><div>$${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">×</button></div></div>`;
             });
-
-            totalEl.innerText = total.toFixed(2);
+            document.getElementById('cartTotal').innerText = total.toFixed(2);
         }
 
-        // Remove Individual Item
         function removeFromCart(index) {
             cart.splice(index, 1);
-            updateCartUI();
+            saveCart();
         }
 
-        // Open/Close Modal Toggle
         function toggleCart() {
-            const modal = document.getElementById('cartModal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+            const m = document.getElementById('cartModal');
+            m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        // Roleplay Checkout Action
         function checkout() {
-            if(cart.length === 0) {
-                alert("Your cart is empty! Add items before checking out.");
-                return;
-            }
-            alert("🎉 Register Checkout Complete! Thanks for shopping at MegaMart Supercenter. Have a sunny summer day!");
+            alert("Checkout complete!");
             cart = [];
-            updateCartUI();
+            saveCart();
             toggleCart();
         }
 
-        // Initialize Store Display
+        updateCartUI();
         displayProducts(products);
     </script>
 </body>
