@@ -3,234 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MegaMart - Ultimate Massive Scale Supercenter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Singadoore Culinary & Suites - Modern Gourmet Market</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --summer-blue: #0082c3;
-            --summer-yellow: #ffcc00;
-            --summer-coral: #ff6f61;
-            --summer-green: #2ecc71;
-            --summer-bg: #fffbf0;
-            --dark-text: #2c3e50;
-            --white: #ffffff;
-            --border-color: #f0d5a8;
-            --sale-red: #e74c3c;
+            --primary-dark: #12161f;
+            --accent-gold: #c5a880;
+            --accent-gold-hover: #d4b892;
+            --bg-cream: #f9f8f6;
+            --card-bg: #ffffff;
+            --text-main: #2b2b2b;
+            --text-muted: #666666;
+            --sale-red: #d9534f;
+            --border-subtle: #eae6df;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Fredoka', cursive, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background-color: var(--summer-bg);
-            color: var(--dark-text);
+            background-color: var(--bg-cream);
+            color: var(--text-main);
         }
 
         header {
-            background: linear-gradient(135deg, var(--summer-blue), #005c8a);
-            color: var(--white);
-            padding: 20px 30px;
+            background: var(--primary-dark);
+            color: #ffffff;
+            padding: 20px 40px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,130,195,0.3);
-            border-bottom: 6px solid var(--summer-yellow);
+            border-bottom: 2px solid var(--accent-gold);
         }
 
         .logo {
-            font-size: 38px;
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
             font-weight: 700;
-            color: var(--summer-yellow);
-            text-transform: uppercase;
+            color: var(--accent-gold);
             letter-spacing: 2px;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
             cursor: pointer;
         }
 
         .search-bar {
             display: flex;
             flex: 1;
-            max-width: 450px;
+            max-width: 400px;
             margin: 10px 20px;
         }
 
         .search-bar input {
             flex: 1;
-            padding: 12px 18px;
+            padding: 10px 16px;
             border: none;
-            border-radius: 30px 0 0 30px;
-            font-size: 16px;
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
             outline: none;
+            background: #1e2430;
+            color: white;
+        }
+
+        .search-bar input::placeholder {
+            color: #8c95a5;
         }
 
         .search-bar button {
-            background-color: var(--summer-yellow);
-            color: var(--dark-text);
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
             border: none;
-            padding: 0 25px;
+            padding: 0 20px;
             font-weight: 700;
             cursor: pointer;
-            border-radius: 0 30px 30px 0;
-            font-size: 16px;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
             transition: 0.2s;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--accent-gold-hover);
         }
 
         .header-actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
         }
 
         .action-chip {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 10px 18px;
-            border-radius: 25px;
+            background: transparent;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(197, 168, 128, 0.4);
             transition: 0.2s;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .action-chip:hover {
-            background: rgba(255,255,255,0.4);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
         }
 
         .cart-btn {
-            background-color: var(--summer-coral);
-            color: var(--white);
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
             border: none;
-            padding: 10px 20px;
+            padding: 9px 18px;
             font-weight: 700;
-            border-radius: 30px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 15px;
-            box-shadow: 0 4px 10px rgba(255,111,97,0.4);
-            transition: transform 0.2s;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        .cart-btn:hover {
+            background-color: var(--accent-gold-hover);
         }
 
         nav {
-            background-color: var(--white);
-            padding: 12px 25px;
+            background-color: #1a202c;
+            padding: 10px 30px;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             overflow-x: auto;
-            border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         nav a {
-            color: var(--summer-blue);
+            color: #a0aec0;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             white-space: nowrap;
             cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 20px;
-            background-color: #eef7fc;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 13px;
             transition: all 0.2s;
         }
 
         nav a:hover, nav a.active {
-            background-color: var(--summer-yellow);
-            color: var(--dark-text);
+            background-color: rgba(197, 168, 128, 0.15);
+            color: var(--accent-gold);
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1350px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
         h2 {
+            font-family: 'Cinzel', serif;
             margin-bottom: 20px;
-            color: var(--summer-blue);
-            font-size: 28px;
-            border-bottom: 3px dashed var(--summer-yellow);
+            color: var(--primary-dark);
+            font-size: 24px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-subtle);
             padding-bottom: 8px;
         }
 
         .hero {
-            background: linear-gradient(rgba(0,130,195,0.75), rgba(255,111,97,0.75)), url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1400&q=80') center/cover;
+            background: linear-gradient(rgba(18,22,31,0.8), rgba(18,22,31,0.8)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80') center/cover;
             color: var(--white);
-            padding: 70px 40px;
-            border-radius: 20px;
+            padding: 60px 40px;
+            border-radius: 8px;
             text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 35px;
+            border: 1px solid rgba(197, 168, 128, 0.3);
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-            color: var(--summer-yellow);
-            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            margin-bottom: 12px;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            color: #d1d5db;
+            font-size: 15px;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
             margin-bottom: 50px;
         }
 
         .product-card {
-            background: var(--white);
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            padding: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 14px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             position: relative;
-            transition: transform 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
         }
 
         .badge-sale {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 10px;
+            right: 10px;
             background: var(--sale-red);
             color: white;
-            padding: 4px 8px;
-            font-size: 11px;
+            padding: 3px 8px;
+            font-size: 10px;
             font-weight: 700;
-            border-radius: 8px;
+            border-radius: 3px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
         }
 
         .product-card img {
             width: 100%;
-            height: 150px;
+            height: 160px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
             background: #eee;
         }
 
         .product-card h3 {
-            font-size: 15px;
-            margin-bottom: 6px;
-            color: var(--dark-text);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-main);
         }
 
         .product-card .dept-tag {
-            font-size: 11px;
-            color: #888;
-            margin-bottom: 4px;
+            font-size: 10px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .price-box {
@@ -241,40 +265,47 @@
         }
 
         .product-card .price {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            color: var(--summer-green);
+            color: var(--primary-dark);
         }
 
         .product-card .old-price {
-            font-size: 13px;
-            color: #999;
+            font-size: 12px;
+            color: var(--text-muted);
             text-decoration: line-through;
         }
 
         .stock-status {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             margin-bottom: 8px;
         }
 
         .in-stock { color: #27ae60; }
-        .out-stock { color: #c0392b; }
+        .out-stock { color: var(--sale-red); }
 
         .product-card button {
-            background-color: var(--summer-blue);
-            color: var(--white);
-            border: none;
-            padding: 9px;
-            border-radius: 10px;
+            background-color: var(--primary-dark);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 8px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 14px;
-            transition: background 0.2s;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .product-card button:hover:not(:disabled) {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
         }
 
         .product-card button:disabled {
-            background-color: #bdc3c7;
+            background-color: #f1f1f1;
+            border-color: #ddd;
+            color: #aaa;
             cursor: not-allowed;
         }
 
@@ -282,87 +313,103 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(18,22,31,0.7);
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
         .modal-content {
-            background: var(--white);
-            padding: 35px;
+            background: var(--card-bg);
+            padding: 30px;
             width: 90%;
-            max-width: 550px;
-            border-radius: 20px;
+            max-width: 520px;
+            border-radius: 8px;
             max-height: 85vh;
             overflow-y: auto;
-            border: 4px solid var(--summer-blue);
+            border-top: 4px solid var(--accent-gold);
             position: relative;
         }
 
         .close-modal {
             position: absolute;
             top: 15px; right: 20px;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             cursor: pointer;
-            color: var(--summer-coral);
+            color: var(--text-muted);
         }
 
         .action-btn {
-            background-color: var(--summer-coral);
-            color: white;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 4px;
             font-weight: 700;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            background-color: var(--accent-gold-hover);
         }
         
         .admin-panel-box {
-            background: #2c3e50;
+            background: var(--primary-dark);
             color: white;
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 6px;
             margin-bottom: 30px;
-            border: 3px solid var(--summer-yellow);
+            border: 1px solid var(--accent-gold);
         }
 
         .admin-panel-box h3 {
-            color: var(--summer-yellow);
-            margin-bottom: 12px;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
         }
 
         .admin-controls {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            margin-top: 12px;
         }
 
         .admin-controls button {
-            background: var(--summer-blue);
-            border: none;
+            background: #1e2430;
+            border: 1px solid rgba(197,168,128,0.3);
             color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 8px 14px;
+            border-radius: 4px;
             font-weight: 600;
+            font-size: 12px;
             cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .admin-controls button:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
         }
 
         .admin-controls button.danger {
-            background: var(--sale-red);
+            border-color: rgba(217, 83, 79, 0.5);
+            color: #ff9995;
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            border-bottom: 2px dashed #eee;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 8px;
+            font-size: 13px;
         }
 
         .hidden { display: none !important; }
@@ -371,56 +418,51 @@
 <body>
 
     <header>
-        <div class="logo" onclick="filterCategory('all')">🌴 MegaMart</div>
+        <div class="logo" onclick="filterCategory('all')">Singadoore Suites</div>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search 500,000+ items..." oninput="searchItems()">
+            <input type="text" id="searchInput" placeholder="Search gourmet dining & amenities..." oninput="searchItems()">
             <button onclick="searchItems()">Search</button>
         </div>
         <div class="header-actions">
-            <button class="action-chip" onclick="openDealsModal()">🔥 Deals</button>
-            <button class="action-chip" onclick="openMemberModal()">⭐ Member Pass</button>
-            <button class="action-chip" onclick="openAccountModal()">👤 Account</button>
-            <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+            <button class="action-chip" onclick="openDealsModal()">Deals</button>
+            <button class="action-chip" onclick="openMemberModal()">Member Pass</button>
+            <button class="action-chip" onclick="openAccountModal()">Account</button>
+            <button class="cart-btn" onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</button>
         </div>
     </header>
 
     <nav id="categoryNav">
-        <a class="active" onclick="filterCategory('all')">🌟 All Departments</a>
-        <a onclick="filterCategory('clothing')">👗 Apparel & Shoes</a>
-        <a onclick="filterCategory('kitchen')">🍳 Kitchen & Appliances</a>
-        <a onclick="filterCategory('grocery')">🧂 Seasonings & Grocery</a>
-        <a onclick="filterCategory('cups')">🥤 Cups & Drinkware</a>
-        <a onclick="filterCategory('electronics')">⚡ Electronics</a>
-        <a onclick="filterCategory('books')">📚 Books & Stationery</a>
-        <a onclick="filterCategory('summer')">☀️ Summer & Pool</a>
-        <a onclick="filterCategory('home')">🏡 Home & Bed</a>
-        <a onclick="filterCategory('toys')">⚽ Toys & Games</a>
-        <a onclick="filterCategory('beauty')">💄 Beauty & Pharmacy</a>
-        <a onclick="filterCategory('pets')">🐾 Pet Supplies</a>
-        <a onclick="filterCategory('hardware')">🔧 Hardware & Auto</a>
-        <a onclick="filterCategory('baby')">🍼 Baby Essentials</a>
+        <a class="active" onclick="filterCategory('all')">All Offerings</a>
+        <a onclick="filterCategory('breakfast')">Breakfast & Bakery</a>
+        <a onclick="filterCategory('lunch')">Gourmet Lunches</a>
+        <a onclick="filterCategory('dinner')">Fine Dinner Entrees</a>
+        <a onclick="filterCategory('beverages')">Artisan Beverages</a>
+        <a onclick="filterCategory('desserts')">Patisserie & Desserts</a>
+        <a onclick="filterCategory('suites')">Luxury Suites</a>
+        <a onclick="filterCategory('pool')">Pool & Cabanas</a>
+        <a onclick="filterCategory('spa')">Spa & Wellness</a>
     </nav>
 
     <div class="container">
-        <!-- Admin Panel (Hidden by default, unlocked via prompt / secret trigger) -->
+        <!-- Admin Panel (Code: 2302) -->
         <div id="adminPanel" class="admin-panel-box hidden">
-            <h3>⚙️ Restricted Administrator Terminal (Code: 2302)</h3>
-            <p style="margin-bottom: 15px;">Live store overrides, inventory loops, deal manipulation, and security clearance logs.</p>
+            <h3>Admin Terminal (Code: 2302)</h3>
+            <p style="font-size: 13px; color: #a0aec0;">Manage live inventory stock cycles, active suite reservations, flash deal specials, and visitor access rights.</p>
             <div class="admin-controls">
-                <button onclick="adminRestockAll()">Force Global Restock All SKUs</button>
-                <button onclick="adminToggleDeals()" class="danger">Cancel / Toggle Active Store Deals</button>
-                <button onclick="adminBanPrompt()" class="danger">Ban Specific Customer ID</button>
-                <button onclick="closeAdminPanel()" style="background:#7f8c8d;">Lock Panel</button>
+                <button onclick="adminRestockAll()">Restock All Items</button>
+                <button onclick="adminToggleDeals()" class="danger">Cancel / Toggle Deals</button>
+                <button onclick="adminBanPrompt()" class="danger">Ban Customer ID</button>
+                <button onclick="closeAdminPanel()" style="background:#4a5568;">Lock Panel</button>
             </div>
-            <div id="adminLog" style="margin-top:15px; font-family:monospace; font-size:13px; color:#f1c40f;">System active. Simulation running normally.</div>
+            <div id="adminLog" style="margin-top:12px; font-family:monospace; font-size:12px; color:var(--accent-gold);">System ready.</div>
         </div>
 
         <div id="heroSection" class="hero">
-            <h1>Massive 500,000+ SKU Store Inventory</h1>
-            <p>Live inventory sync active: items fly off shelves dynamically in real time!</p>
+            <h1>Singadoore Culinary & Suites</h1>
+            <p>Experience ultra-modern dining, gourmet breakfast plates, and luxury hospitality items with live inventory status.</p>
         </div>
 
-        <h2 id="sectionTitle">Store Inventory Catalog</h2>
+        <h2 id="sectionTitle">Gourmet Selection & Amenities</h2>
         <div class="product-grid" id="productGrid"></div>
     </div>
 
@@ -428,18 +470,18 @@
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleCart()">&times;</span>
-            <h2 style="color:var(--summer-blue); border:none;">🛒 Shopping Cart</h2>
-            <div id="cartItemsList"><p>Your cart is empty.</p></div>
-            <hr style="margin: 20px 0; border: 1px solid #eee;">
-            <h3 style="margin-bottom: 20px;">Total: $<span id="cartTotal">0.00</span></h3>
-            <button class="action-btn" onclick="checkout()">Proceed to Checkout</button>
+            <h2 style="border:none; font-size:20px; margin-bottom:15px;">Your Shopping Cart</h2>
+            <div id="cartItemsList"><p style="font-size:13px; color:var(--text-muted);">Your cart is empty.</p></div>
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid var(--border-subtle);">
+            <h3 style="font-size:16px; margin-bottom: 15px;">Total: $<span id="cartTotal">0.00</span></h3>
+            <button class="action-btn" onclick="checkout()">Proceed to Secure Checkout</button>
         </div>
     </div>
 
     <div class="modal" id="dealsModal">
         <div class="modal-content">
             <span class="close-modal" onclick="openDealsModal()">&times;</span>
-            <h2 style="color:var(--sale-red); border:none;">🔥 Active Store Flash Deals</h2>
+            <h2 style="border:none; font-size:20px; color:var(--sale-red); margin-bottom:15px;">Active Flash Deals</h2>
             <div id="dealsContainer"></div>
         </div>
     </div>
@@ -447,191 +489,146 @@
     <div class="modal" id="memberModal">
         <div class="modal-content">
             <span class="close-modal" onclick="openMemberModal()">&times;</span>
-            <h2 style="color:var(--summer-blue); border:none;">⭐ MegaMart Member Pass</h2>
-            <p style="margin-bottom:15px;">Unlock free drone deliveries, double cash-back rewards, and early access to limited stock drops!</p>
-            <div style="background:#eef7fc; padding:20px; border-radius:12px; text-align:center; margin-bottom:15px;">
-                <h3 style="color:var(--summer-blue); margin-bottom:5px;" id="passStatusTitle">Standard Guest Tier</h3>
-                <p id="passStatusDesc">Upgrade today for $9.99/month</p>
+            <h2 style="border:none; font-size:20px; margin-bottom:15px;">Singadoore Member Pass</h2>
+            <p style="font-size:13px; color:var(--text-muted); margin-bottom:15px;">Unlock 10% off all modern dining selections, priority cabana reservations, and complimentary morning espresso service.</p>
+            <div style="background:var(--bg-cream); padding:15px; border-radius:6px; text-align:center; margin-bottom:15px; border: 1px solid var(--border-subtle);">
+                <h3 style="font-size:15px; color:var(--primary-dark); margin-bottom:4px;" id="passStatusTitle">Standard Guest Status</h3>
+                <p style="font-size:12px; color:var(--text-muted);" id="passStatusDesc">Upgrade today for $12.99/month</p>
             </div>
-            <button class="action-btn" id="passUpgradeBtn" onclick="toggleMemberPass()">Upgrade to VIP Gold Pass 🌟</button>
+            <button class="action-btn" id="passUpgradeBtn" onclick="toggleMemberPass()">Upgrade to VIP Gold Pass</button>
         </div>
     </div>
 
     <div class="modal" id="accountModal">
         <div class="modal-content">
             <span class="close-modal" onclick="openAccountModal()">&times;</span>
-            <h2 style="color:var(--summer-blue); border:none;">👤 Customer Account & Admin Entry</h2>
-            <div style="margin-bottom: 15px;">
-                <label style="display:block; font-weight:600; margin-bottom:5px;">Profile Name:</label>
-                <input type="text" id="accName" value="Valued Shopper" style="width:100%; padding:10px; border:2px solid var(--border-color); border-radius:8px;">
+            <h2 style="border:none; font-size:20px; margin-bottom:15px;">Account & Administrator Console</h2>
+            <div style="margin-bottom: 12px;">
+                <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Guest Name:</label>
+                <input type="text" id="accName" value="Valued Patron" style="width:100%; padding:8px 12px; border:1px solid var(--border-subtle); border-radius:4px; font-size:13px;">
             </div>
             <div style="margin-bottom: 15px;">
-                <label style="display:block; font-weight:600; margin-bottom:5px;">Admin Terminal Security Passkey:</label>
-                <input type="password" id="adminCodeInput" placeholder="Enter 4-digit code..." style="width:100%; padding:10px; border:2px solid var(--border-color); border-radius:8px;">
+                <label style="display:block; font-size:12px; font-weight:600; margin-bottom:4px;">Admin Passkey Code:</label>
+                <input type="password" id="adminCodeInput" placeholder="Enter 4-digit code (2302)..." style="width:100%; padding:8px 12px; border:1px solid var(--border-subtle); border-radius:4px; font-size:13px;">
             </div>
-            <button class="action-btn" onclick="verifyAdminCode()">Authenticate Terminal / Save Account</button>
+            <button class="action-btn" onclick="verifyAdminCode()">Authenticate Admin / Update Profile</button>
         </div>
     </div>
 
     <script>
-        // Custom explicit image links scraped across various real domains to avoid placeholders
-        const realImages = {
-            clothing: [
-                "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=400&q=80"
+        // Dedicated unique modern Unsplash imagery pool for distinct food/amenity representations
+        const foodImages = {
+            breakfast: [
+                "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1533910534207-90f31e29a8a1?auto=format&fit=crop&w=500&q=80"
             ],
-            kitchen: [
-                "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1517668808822-9feb02f2a0e1?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1570222094111-b06ba69e4c6c?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=400&q=80"
+            lunch: [
+                "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=500&q=80"
             ],
-            grocery: [
-                "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1532336414038-cf19250c5756?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1558857563-b3c10dc2d5d6?auto=format&fit=crop&w=400&q=80"
+            dinner: [
+                "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=500&q=80"
             ],
-            cups: [
-                "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=80"
+            beverages: [
+                "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=500&q=80"
             ],
-            electronics: [
-                "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80"
+            desserts: [
+                "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80"
             ],
-            books: [
-                "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80"
+            suites: [
+                "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=500&q=80"
             ],
-            summer: [
-                "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=400&q=80"
+            pool: [
+                "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
             ],
-            home: [
-                "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80"
-            ],
-            toys: [
-                "https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=400&q=80"
-            ],
-            beauty: [
-                "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=80"
-            ],
-            pets: [
-                "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=400&q=80"
-            ],
-            hardware: [
-                "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=400&q=80"
-            ],
-            baby: [
-                "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=400&q=80",
-                "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=400&q=80"
+            spa: [
+                "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1519823551788-b86c91643c70?auto=format&fit=crop&w=500&q=80",
+                "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80"
             ]
         };
 
         const categoriesData = [
-            { cat: "clothing", dept: "Apparel & Shoes", names: ["Sundress", "Graphic Tee", "Running Shoes", "Denim Jeans", "Hoodie", "Sneakers", "Polo", "Tank Top", "Shorts", "Flannel"] },
-            { cat: "kitchen", dept: "Kitchen & Appliances", names: ["Air Fryer", "Coffee Maker", "Microwave", "Blender", "Toaster", "Stand Mixer", "Skillet", "Juicer", "Waffle Maker", "Slow Cooker"] },
-            { cat: "grocery", dept: "Seasonings & Grocery", names: ["Steak Seasoning", "Pink Salt", "Garlic Powder", "Ketchup", "Black Pepper", "BBQ Rub", "Paprika", "Cumin", "Oregano", "Basil"] },
-            { cat: "cups", dept: "Cups & Drinkware", names: ["Tumbler", "Insulated Mug", "Mason Jar", "Coffee Mug", "Party Cups", "Thermos", "Wine Glass", "Pint Glass", "Water Bottle", "Pitcher"] },
-            { cat: "electronics", dept: "Electronics", names: ["Wall Charger", "Power Bank", "Cable", "Wireless Pad", "Smart TV", "AirPods", "Laptop", "Speaker", "Smartwatch", "HDMI Cord"] },
-            { cat: "books", dept: "Books & Stationery", names: ["Novel", "Notebook", "Markers", "Journal", "Colored Pencils", "Sketchbook", "Gel Pens", "Sticky Notes", "Binders", "Composition Book"] },
-            { cat: "summer", dept: "Summer & Pool", names: ["Pool", "Beach Chair", "Cooler", "Beach Towel", "Pool Float", "Grill", "Water Balloons", "Snorkel", "Umbrella", "Hammock"] },
-            { cat: "home", dept: "Home & Bed", names: ["Pillow", "Vacuum", "Bath Towel", "Mattress", "Curtains", "Bed Sheets", "Area Rug", "Laundry Basket", "Shower Curtain", "Candle"] },
-            { cat: "toys", dept: "Toys & Games", names: ["LEGO Set", "Nerf Blaster", "Basketball", "Action Figure", "Board Game", "RC Car", "Puzzle", "Stuffed Animal", "Dollhouse", "Blocks"] },
-            { cat: "beauty", dept: "Beauty & Pharmacy", names: ["Sunscreen", "Vitamins", "Concealer", "Moisturizer", "Shampoo", "Lip Balm", "Body Wash", "Cleanser", "Hair Dryer", "Straightener"] },
-            { cat: "pets", dept: "Pet Supplies", names: ["Dog Food", "Cat Toy", "Pet Leash", "Scratching Post", "Chew Toy", "Bird Seed", "Hamster Cage", "Grooming Brush", "Fish Filter", "Pet Bed"] },
-            { cat: "hardware", dept: "Hardware & Auto", names: ["Tool Set", "Motor Oil", "Cordless Drill", "WD-40", "Car Soap", "Flashlight", "Tape Measure", "Multimeter", "Socket Set", "LED Light"] },
-            { cat: "baby", dept: "Baby Essentials", names: ["Diapers", "Formula", "Baby Wipes", "Lotion", "Baby Shampoo", "Pacifier", "Baby Bottle", "Teething Toy", "Organizer", "High Chair"] }
+            { cat: "breakfast", dept: "Breakfast & Bakery", names: ["Trufa Pancake Stack", "Artisan Avocado Toast", "Matcha Chia Bowl", "Poached Eggs Florentine", "Crispy Belgian Waffle", "Smoked Salmon Bagel", "Almond Croissant", "Brioche French Toast", "Acai Superfood Bowl", "Lemon Citrus Scone"] },
+            { cat: "lunch", dept: "Gourmet Lunches", names: ["Truffle Wagyu Burger", "Mediterranean Quinoa Bowl", "Pan-Seared Salmon Salad", "Lobster Roll Brioche", "Avocado Chicken Wrap", "Pesto Artisanal Flatbread", "Grilled Halloumi Bowl", "Crispy Calamari Salad", "Roasted Duck Panini", "Harvest Grain Bowl"] },
+            { cat: "dinner", dept: "Fine Dinner Entrees", names: ["Herb-Crusted Ribeye", "Pan-Roasted Sea Bass", "Wild Mushroom Risotto", "Truffle Gnocchi Supreme", "Rack of Lamb Provençal", "Lobster Tail Thermidor", "Duck Confit Modern", "Saffron Seafood Paella", "Filet Mignon Rossini", "Roasted Cauliflower Steak"] },
+            { cat: "beverages", dept: "Artisan Beverages", names: ["Espresso Martini Modern", "Cold Brew Nitro", "Botanical Gin Fizz", "Sparkling Yuzu Soda", "Matcha Green Latte", "Hibiscus Spritz", "Sommelier Reserve Red", "Vintage Champagne", "Fresh Mango Smoothie", "Infused Mint Lemonade"] },
+            { cat: "desserts", dept: "Patisserie & Desserts", names: ["Valrhona Lava Cake", "Tiramisu Signature", "Yuzu Citrus Tart", "Matcha Opera Cake", "Berry Panna Cotta", "Salted Caramel Macaron", "Dark Chocolate Soufflé", "Artisan Gelato Trio", "Passionfruit Cheesecake", "Vanilla Bean Crème Brûlée"] },
+            { cat: "suites", dept: "Luxury Suites", names: ["Penthouse Ocean Suite", "Deluxe King Balcony", "Executive Poolside Suite", "Presidential Grand Suite", "Junior Garden Suite", "Sunset Skyline Loft"] },
+            { cat: "pool", dept: "Pool & Cabanas", names: ["VIP Cabana Rental", "Infinity Pool Day Pass", "Sunset Lounge Bed", "Poolside Cocktail Service", "Hydrotherapy Spa Pass"] },
+            { cat: "spa", dept: "Spa & Wellness", names: ["Deep Tissue Massage", "Aromatherapy Facial", "Hot Stone Therapy", "Hemp Recovery Wrap", "Zen Meditation Session"] }
         ];
 
         const products = [];
         let idCounter = 1;
-        const variants = ["Standard", "Deluxe", "Ultra", "Mega Pack", "Pro", "Elite", "Max", "Supreme", "Classic", "Prime"];
-        const adjectives = ["Super", "Eco", "Pro-Grade", "Smart", "Luxury", "Essential", "Advanced", "Industrial", "Heavy-Duty", "Modern"];
+        const variants = ["Signature", "Chef's Special", "Exclusive", "Grand", "Premier", "Classic", "Gourmet"];
+        const modifiers = ["", "Deluxe", "Artisanal", "Reserve", "Prime"];
 
-        // Generate 500k inventory without index numbers in titles
-        while (products.length < 500000) {
-            for (let c = 0; c < categoriesData.length; c++) {
-                let catObj = categoriesData[c];
-                let imgList = realImages[catObj.cat];
-                for (let n = 0; n < catObj.names.length; n++) {
-                    let baseName = catObj.names[n];
-                    for (let v = 0; v < variants.length; v++) {
-                        for (let a = 0; a < adjectives.length; a++) {
-                            let uniqueImg = imgList[(n + v + a) % imgList.length];
-                            let isOnSale = Math.random() < 0.25; // 25% chance of sale
-                            let basePrice = parseFloat((Math.random() * 150 + 4.99).toFixed(2));
-                            let finalPrice = isOnSale ? parseFloat((basePrice * 0.75).toFixed(2)) : basePrice;
+        // Generate diverse items ensuring unique images mapped by category & index
+        categoriesData.forEach(catObj => {
+            let imgPool = foodImages[catObj.cat];
+            catObj.names.forEach((baseName, nIdx) => {
+                variants.forEach((v, vIdx) => {
+                    modifiers.forEach((mod, mIdx) => {
+                        let fullName = mod ? `${mod} ${baseName} ${v}` : `${baseName} ${v}`;
+                        let uniqueImage = imgPool[(nIdx + vIdx + mIdx) % imgPool.length];
+                        let isOnSale = Math.random() < 0.25;
+                        let basePrice = parseFloat((Math.random() * 45 + 8.99).toFixed(2));
+                        let finalPrice = isOnSale ? parseFloat((basePrice * 0.8).toFixed(2)) : basePrice;
 
-                            products.push({
-                                id: idCounter,
-                                name: `${adjectives[a]} ${baseName} ${variants[v]}`,
-                                price: finalPrice,
-                                oldPrice: isOnSale ? basePrice : null,
-                                onSale: isOnSale,
-                                inStock: Math.random() > 0.15, // 85% chance initialized in stock
-                                category: catObj.cat,
-                                dept: catObj.dept,
-                                image: uniqueImg
-                            });
-                            idCounter++;
-                            if (products.length >= 500000) break;
-                        }
-                        if (products.length >= 500000) break;
-                    }
-                    if (products.length >= 500000) break;
-                }
-                if (products.length >= 500000) break;
-            }
-        }
+                        products.push({
+                            id: idCounter++,
+                            name: fullName,
+                            price: finalPrice,
+                            oldPrice: isOnSale ? basePrice : null,
+                            onSale: isOnSale,
+                            inStock: Math.random() > 0.12,
+                            category: catObj.cat,
+                            dept: catObj.dept,
+                            image: uniqueImage
+                        });
+                    });
+                });
+            });
+        });
 
-        let cart = JSON.parse(localStorage.getItem('megamart_cart')) || [];
+        let cart = JSON.parse(localStorage.getItem('singadoore_cart')) || [];
         let activeCategoryFilter = 'all';
         let isVipMember = false;
         let dealsActiveFlag = true;
 
-        // Dynamic shopping simulator: random items go out of stock or back in stock over time
+        // Dynamic stock simulator: random items toggle stock status to make it look active
         setInterval(() => {
             if (products.length === 0) return;
-            // Randomly flip stock status of 10 random items to simulate live purchases
-            for(let i=0; i<15; i++) {
-                let randIdx = Math.floor(Math.random() * 50000);
-                products[randIdx].inStock = Math.random() > 0.3;
+            for(let i=0; i<4; i++) {
+                let randIdx = Math.floor(Math.random() * products.length);
+                products[randIdx].inStock = Math.random() > 0.25;
             }
-            // Refresh grid if on screen
             displayProducts(filterCurrentList());
-        }, 5000);
+        }, 6000);
 
         function filterCurrentList() {
             if (activeCategoryFilter === 'all') return products;
@@ -643,16 +640,15 @@
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
             if (items.length === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No matching items available in this category.</p>';
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:var(--text-muted);">No items found in this section.</p>';
                 return;
             }
-            // Render first 100 sliced entries for smooth performance
-            items.slice(0, 100).forEach(p => {
+            items.slice(0, 80).forEach(p => {
                 let showDealBadge = p.onSale && dealsActiveFlag;
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    ${showDealBadge ? '<div class="badge-sale">Sale</div>' : ''}
+                    ${showDealBadge ? '<div class="badge-sale">Special</div>' : ''}
                     <img src="${p.image}" alt="${p.name}" loading="lazy">
                     <div class="dept-tag">${p.dept}</div>
                     <h3>${p.name}</h3>
@@ -661,10 +657,10 @@
                         ${showDealBadge && p.oldPrice ? `<div class="old-price">$${p.oldPrice.toFixed(2)}</div>` : ''}
                     </div>
                     <div class="stock-status ${p.inStock ? 'in-stock' : 'out-stock'}">
-                        ${p.inStock ? '✔ In Stock (Selling fast)' : '❌ Out of Stock'}
+                        ${p.inStock ? 'Available' : 'Sold Out'}
                     </div>
                     <button onclick="addToCart(${p.id})" ${!p.inStock ? 'disabled' : ''}>
-                        ${p.inStock ? 'Add to Cart 🛒' : 'Sold Out'}
+                        ${p.inStock ? 'Add to Order' : 'Unavailable'}
                     </button>
                 `;
                 grid.appendChild(card);
@@ -693,7 +689,7 @@
         }
 
         function saveCart() {
-            localStorage.setItem('megamart_cart', JSON.stringify(cart));
+            localStorage.setItem('singadoore_cart', JSON.stringify(cart));
             updateCartUI();
         }
 
@@ -702,21 +698,21 @@
             const list = document.getElementById('cartItemsList');
             let total = 0;
             if (cart.length === 0) {
-                list.innerHTML = '<p>Your cart is empty.</p>';
+                list.innerHTML = '<p style="font-size:13px; color:var(--text-muted);">Your cart is empty.</p>';
                 document.getElementById('cartTotal').innerText = '0.00';
                 return;
             }
             list.innerHTML = '';
             cart.forEach((item, index) => {
-                let effectivePrice = isVipMember ? item.price * 0.9 : item.price; // 10% VIP discount
+                let effectivePrice = isVipMember ? item.price * 0.9 : item.price;
                 total += effectivePrice;
                 list.innerHTML += `
                     <div class="cart-item">
                         <div>
                             <strong>${item.name}</strong><br>
-                            <small>${isVipMember ? 'VIP 10% Discount applied' : ''}</small>
+                            <small style="color:var(--accent-gold);">${isVipMember ? '10% VIP Discount Applied' : ''}</small>
                         </div>
-                        <div>$${effectivePrice.toFixed(2)} <button onclick="removeFromCart(${index})" style="background:none;border:none;color:red;cursor:pointer;font-weight:bold;">×</button></div>
+                        <div>$${effectivePrice.toFixed(2)} <button onclick="removeFromCart(${index})" style="background:none;border:none;color:var(--sale-red);cursor:pointer;font-weight:bold;margin-left:8px;">×</button></div>
                     </div>`;
             });
             document.getElementById('cartTotal').innerText = total.toFixed(2);
@@ -740,18 +736,18 @@
                 m.style.display = 'flex';
                 const container = document.getElementById('dealsContainer');
                 if(!dealsActiveFlag) {
-                    container.innerHTML = '<p>All store deals have been deactivated by the administration team.</p>';
+                    container.innerHTML = '<p style="font-size:13px; color:var(--text-muted);">All flash deals have been deactivated by administration.</p>';
                     return;
                 }
-                const activeDeals = products.filter(p => p.onSale).slice(0, 15);
+                const activeDeals = products.filter(p => p.onSale).slice(0, 12);
                 container.innerHTML = activeDeals.map(d => `
-                    <div style="display:flex;align-items:center;gap:15px;margin-bottom:12px;border-bottom:1px solid #eee;padding-bottom:8px;">
-                        <img src="${d.image}" style="width:50px;height:50px;object-fit:cover;border-radius:8px;">
-                        <div style="flex:1;">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;border-bottom:1px solid var(--border-subtle);padding-bottom:8px;">
+                        <img src="${d.image}" style="width:45px;height:45px;object-fit:cover;border-radius:4px;">
+                        <div style="flex:1; font-size:13px;">
                             <strong>${d.name}</strong><br>
-                            <span style="color:var(--sale-red);font-weight:700;">$${d.price.toFixed(2)}</span> <span style="text-decoration:line-through;color:#999;font-size:12px;">$${d.oldPrice ? d.oldPrice.toFixed(2) : ''}</span>
+                            <span style="color:var(--sale-red);font-weight:700;">$${d.price.toFixed(2)}</span> <span style="text-decoration:line-through;color:var(--text-muted);font-size:11px;">$${d.oldPrice ? d.oldPrice.toFixed(2) : ''}</span>
                         </div>
-                        <button onclick="addToCart(${d.id}); openDealsModal();" style="background:var(--summer-blue);color:white;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;">Buy</button>
+                        <button onclick="addToCart(${d.id}); openDealsModal();" style="background:var(--primary-dark);color:var(--accent-gold);border:none;padding:5px 10px;border-radius:4px;cursor:pointer;font-size:12px;">Add</button>
                     </div>
                 `).join('');
             }
@@ -764,11 +760,11 @@
 
         function toggleMemberPass() {
             isVipMember = !isVipMember;
-            document.getElementById('passStatusTitle').innerText = isVipMember ? '⭐ VIP Gold Member Active' : 'Standard Guest Tier';
-            document.getElementById('passStatusDesc').innerText = isVipMember ? 'Enjoying 10% off entire cart automatically!' : 'Upgrade today for $9.99/month';
-            document.getElementById('passUpgradeBtn').innerText = isVipMember ? 'Cancel Membership' : 'Upgrade to VIP Gold Pass 🌟';
+            document.getElementById('passStatusTitle').innerText = isVipMember ? 'VIP Gold Pass Active' : 'Standard Guest Status';
+            document.getElementById('passStatusDesc').innerText = isVipMember ? 'Enjoying 10% off all modern dining & room upgrades!' : 'Upgrade today for $12.99/month';
+            document.getElementById('passUpgradeBtn').innerText = isVipMember ? 'Cancel Membership' : 'Upgrade to VIP Gold Pass';
             updateCartUI();
-            alert(isVipMember ? "Welcome to VIP Gold Pass! 10% member savings activated." : "Membership cancelled.");
+            alert(isVipMember ? "VIP Gold Pass activated successfully!" : "Membership subscription cancelled.");
         }
 
         function openAccountModal() {
@@ -781,10 +777,10 @@
             if (code === '2302') {
                 document.getElementById('adminPanel').classList.remove('hidden');
                 openAccountModal();
-                alert("Administrator terminal unlocked successfully!");
+                alert("Admin terminal authenticated successfully.");
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
-                alert("Invalid security passcode entered.");
+                alert("Incorrect administration code.");
             }
         }
 
@@ -794,32 +790,32 @@
 
         function adminRestockAll() {
             products.forEach(p => p.inStock = true);
-            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Force restock broadcast executed: All 500,000 SKUs refilled.`;
+            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Restock complete: All catalog items refilled.`;
             displayProducts(filterCurrentList());
-            alert("All items have been forcibly restocked across all departments!");
+            alert("All items successfully restocked!");
         }
 
         function adminToggleDeals() {
             dealsActiveFlag = !dealsActiveFlag;
-            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Deals override status: active = ${dealsActiveFlag}`;
+            document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Deals state changed: active = ${dealsActiveFlag}`;
             displayProducts(filterCurrentList());
-            alert(dealsActiveFlag ? "Store flash deals re-enabled!" : "All active deals cancelled system-wide!");
+            alert(dealsActiveFlag ? "Flash deals enabled!" : "All flash deals cancelled system-wide!");
         }
 
         function adminBanPrompt() {
-            let custId = prompt("Enter Customer ID or IP to ban:");
+            let custId = prompt("Enter Customer Account ID or Username to ban:");
             if(custId) {
-                document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Security action: Customer token [${custId}] successfully revoked & banned.`;
-                alert(`Customer ${custId} has been banned from making purchases.`);
+                document.getElementById('adminLog').innerText = `[${new Date().toLocaleTimeString()}] Security: Customer [${custId}] access revoked.`;
+                alert(`Customer ${custId} has been banned from the system.`);
             }
         }
 
         function checkout() {
             if(cart.length === 0) {
-                alert("Your cart is empty!");
+                alert("Your order cart is empty.");
                 return;
             }
-            alert("Order checked out successfully via MegaMart Express Logistics!");
+            alert("Order placed successfully! Preparing your items.");
             cart = [];
             saveCart();
             toggleCart();
